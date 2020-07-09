@@ -130,14 +130,37 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
 # Dark mode 
-config.set('colors.webpage.prefers_color_scheme_dark', True)
-config.set('colors.webpage.bg', 'black')
-config.set('colors.webpage.darkmode.enabled', True)
-#QTWEBENGINE_CHROMIUM_FLAGS="--enable-blink-features FaceDetector" qutebrowser --temp-basedir https://shape-detection-demo.glitch.me/
-#QTWEBENGINE_CHROMIUM_FLAGS="--disable-blink-features Notifications" qutebrowser --temp-basedir https://www.bennish.net/web-notifications.html
+c.colors.webpage.prefers_color_scheme_dark = True
+
+c.colors.webpage.bg = "#000000"
+
+c.colors.webpage.darkmode.enabled = True
+
+c.qt.args = [ "blink-settings=darkMode=4" ]
+
+c.colors.tabs.even.bg = "#000000"
+
+c.colors.tabs.bar.bg = "#000000"
+
+c.colors.tabs.odd.bg = "#191919"
+
+c.colors.tabs.odd.fg = "white"
+
+c.colors.tabs.selected.odd.bg = "#21324a"
+c.colors.tabs.selected.odd.fg = "white"
+
+c.colors.tabs.selected.even.bg = "#21324a"
+c.colors.tabs.selected.even.fg = "white"
+#c.colors.webpage.darkmode.policy.images = "always"
+
 # scroll bar
+
 c.scrolling.bar = "never"
+
+#c.tabs.position = "left"
+
 # show/hide tabs
+
 config.bind('xx', 'config-cycle tabs.show always switching')
 
 config.bind('xz', 'config-cycle statusbar.hide')
@@ -149,31 +172,20 @@ config.bind('<Shift-k>', 'tab-next')
 
 config.bind('<Shift-j>', 'tab-prev')
 
-
-
 c.url.searchengines = {
-    'DEFAULT':  'https://google.com/search?hl=en&q={}',
+
+    'DEFAULT':  'https://searx.ninja/search?q={}',
     '!a':       'https://www.amazon.com/s?k={}',
     '!d':       'https://duckduckgo.com/?ia=web&q={}',
     '!dd':      'https://thefreedictionary.com/{}',
     '!e':       'https://www.ebay.com/sch/i.html?_nkw={}',
-    '!fb':      'https://www.facebook.com/s.php?q={}',
     '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
     '!gist':    'https://gist.github.com/search?q={}',
-    '!gi':      'https://www.google.com/search?tbm=isch&q={}&tbs=imgo:1',
-    '!gn':      'https://news.google.com/search?q={}',
-    '!m':       'https://www.google.com/maps/search/{}',
-    '!p':       'https://pry.sh/{}',
     '!r':       'https://www.reddit.com/search?q={}',
-    '!sd':      'https://slickdeals.net/newsearch.php?q={}&searcharea=deals&searchin=first',
-    '!t':       'https://www.thesaurus.com/browse/{}',
     '!tw':      'https://twitter.com/search?q={}',
     '!w':       'https://en.wikipedia.org/wiki/{}',
-    '!yelp':    'https://www.yelp.com/search?find_desc={}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
-
-#https://searx.alec.ninja/
-# scroll bar show/hide
-#config.bind('xs', 'scrolling.bar' == "never")
+c.url.default_page = 'https://searx.alec.ninja/'
+c.url.start_pages = 'https://searx.alec.ninja/'
