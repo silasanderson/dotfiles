@@ -105,6 +105,8 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # Type: FormatString
 config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://drive.google.com/*')
 
+
+config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko/20100101 Firefox/71.0', 'https://netflix.com/*')
 # Load images automatically in web pages.
 # Type: Bool
 config.set('content.images', True, 'chrome-devtools://*')
@@ -132,11 +134,11 @@ config.set('content.javascript.enabled', True, 'qute://*/*')
 # Dark mode 
 c.colors.webpage.prefers_color_scheme_dark = True
 
-c.colors.webpage.bg = "#000000"
+c.colors.webpage.bg = "black"
 
 c.colors.webpage.darkmode.enabled = True
 
-c.qt.args = [ "blink-settings=darkMode=4" ]
+c.qt.args = [ "blink-settings=darkMode=4" ]  
 
 c.colors.tabs.even.bg = "#000000"
 
@@ -151,15 +153,16 @@ c.colors.tabs.selected.odd.fg = "white"
 
 c.colors.tabs.selected.even.bg = "#21324a"
 c.colors.tabs.selected.even.fg = "white"
-#c.colors.webpage.darkmode.policy.images = "always"
+c.colors.webpage.darkmode.policy.images = "smart"
+# Bookmarks
+
+config.unbind('<d>', mode='normal')
 
 # scroll bar
 
 c.scrolling.bar = "never"
 
 #c.tabs.position = "left"
-
-# show/hide tabs
 
 config.bind('xx', 'config-cycle tabs.show always switching')
 
@@ -172,20 +175,17 @@ config.bind('<Shift-k>', 'tab-next')
 
 config.bind('<Shift-j>', 'tab-prev')
 
+config.bind('<Shift-r>', 'restart')
+
 c.url.searchengines = {
 
     'DEFAULT':  'https://searx.ninja/search?q={}',
-    '!a':       'https://www.amazon.com/s?k={}',
-    '!d':       'https://duckduckgo.com/?ia=web&q={}',
-    '!dd':      'https://thefreedictionary.com/{}',
-    '!e':       'https://www.ebay.com/sch/i.html?_nkw={}',
     '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
-    '!gist':    'https://gist.github.com/search?q={}',
-    '!r':       'https://www.reddit.com/search?q={}',
-    '!tw':      'https://twitter.com/search?q={}',
     '!w':       'https://en.wikipedia.org/wiki/{}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
 c.url.default_page = 'https://searx.alec.ninja/'
 c.url.start_pages = 'https://searx.alec.ninja/'
+# downloads location
+c.downloads.location.directory = "~/download"
