@@ -67,7 +67,7 @@ config.set('content.headers.user_agent', 'Mozilla/5.0 ({os_info}; rv:71.0) Gecko
 # `{os_info}`: Something like "X11; Linux x86_64". * `{webkit_version}`:
 # The underlying WebKit version (set to a fixed value   with
 # QtWebEngine). * `{qt_key}`: "Qt" for QtWebKit, "QtWebEngine" for
-# QtWebEngine. * `{qt_version}`: The underlying Qt version. *
+# QtWebEngine. * `{qt_version}`: The underlying Qtversion. *
 # `{upstream_browser_key}`: "Version" for QtWebKit, "Chrome" for
 # QtWebEngine. * `{upstream_browser_version}`: The corresponding
 # Safari/Chrome version. * `{qutebrowser_version}`: The currently
@@ -188,4 +188,4 @@ c.url.searchengines = {
 c.url.default_page = 'https://searx.alec.ninja/'
 c.url.start_pages = 'https://searx.alec.ninja/'
 # downloads location
-c.downloads.location.directory = "~/download"
+c.downloads.location.directory = "~/download" 
