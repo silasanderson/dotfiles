@@ -1,7 +1,28 @@
-# Dark mode 
-c.colors.webpage.prefers_color_scheme_dark = True
+# set some defalt colors
 
-c.colors.webpage.bg = "black"
+base00 = "#000000"
+base01 = "#3D4048"
+base02 = "#53555D"
+base03 = "#686A71"
+base04 = "#7E8086"
+base05 = "#939599"
+base06 = "#A9AAAE"
+base07 = "#BEBFC2"
+base08 = "#B21889"
+base09 = "#786DC5"
+base0A = "#438288"
+base0B = "#5eff99"
+base0C = "#00A0BE"
+base0D = "#790EAD"
+base0E = "#B21889"
+base0F = "#C77C48"
+basebl = "#000000"
+basewh = "#ffffff"
+baseg  = "#5eff99"
+
+# Dark mode 
+
+c.colors.webpage.prefers_color_scheme_dark = True
 
 config.set("colors.webpage.darkmode.enabled", True)
 
@@ -58,11 +79,9 @@ c.url.default_page = 'https://searx.alec.ninja/'
 c.url.start_pages = 'https://searx.alec.ninja/'
 # downloads location
 c.downloads.location.directory = "~/download"
-# base16-qutebrowser (https://github.com/theova/base16-qutebrowser)
-# Base16 qutebrowser template by theova
-# XCode Dusk scheme by Elsa Gonsiorowski (https://github.com/gonsie)
 
-#base00 = "#282B35"
+# colorscheme
+
 base00 = "#000000"
 base01 = "#3D4048"
 base02 = "#53555D"
@@ -356,6 +375,5 @@ c.colors.tabs.selected.even.fg = base00
 # Background color of selected even tabs.
 c.colors.tabs.selected.even.bg = base05
 
-# Background color for webpages if unset (or empty to use the theme's
-# color).
-# c.colors.webpage.bg = base00
+# Background color for webpages if unset (or empty to use the theme's color).
+c.colors.webpage.bg = base00
