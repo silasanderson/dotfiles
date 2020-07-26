@@ -80,28 +80,6 @@ c.url.start_pages = 'https://searx.alec.ninja/'
 # downloads location
 c.downloads.location.directory = "~/download"
 
-# colorscheme
-
-base00 = "#000000"
-base01 = "#3D4048"
-base02 = "#53555D"
-base03 = "#686A71"
-base04 = "#7E8086"
-base05 = "#939599"
-base06 = "#A9AAAE"
-base07 = "#BEBFC2"
-base08 = "#B21889"
-base09 = "#786DC5"
-base0A = "#438288"
-base0B = "#5eff99"
-base0C = "#00A0BE"
-base0D = "#790EAD"
-base0E = "#B21889"
-base0F = "#C77C48"
-basebl = "#000000"
-basewh = "#ffffff"
-baseg  = "#5eff99"
-
 # set qutebrowser colors
 
 # Text color of the completion widget. May be a single color to use for
