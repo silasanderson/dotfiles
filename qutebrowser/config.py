@@ -1,5 +1,4 @@
 # set some defalt colors
-
 base00 = "#000000"
 base01 = "#3D4048"
 base02 = "#53555D"
@@ -21,7 +20,6 @@ basewh = "#ffffff"
 baseg  = "#5eff99"
 
 # Dark mode 
-
 c.colors.webpage.prefers_color_scheme_dark = True
 
 config.set("colors.webpage.darkmode.enabled", True)
@@ -39,18 +37,18 @@ c.tabs.padding = {'top': 1, 'bottom': 1, 'left': 2, 'right': 2}
 
 c.tabs.position = 'top'
 
-c.tabs.title.format = '{index}'
+#c.tabs.title.format = '{index}'
 
-c.tabs.title.format_pinned = '{index}'
+#c.tabs.title.format_pinned = '{index}'
 
 c.tabs.width = 31
-# Bookmarks
 
+# Bookmarks
 config.unbind('<d>', mode='normal')
 
 # scroll bar
 
-c.scrolling.bar = "never"
+c.scrolling.bar = "when-searching"
 
 #c.tabs.position = "left"
 
@@ -60,6 +58,7 @@ config.bind('xz', 'config-cycle statusbar.hide')
 
 #config.bind('xc', 'config-cycle statusbar.hide ;; config-cycle tabs.show always switching')
 c.tabs.last_close = "close"
+
 # Rebind
 #config.bind('<Shift-k>', 'tab-next')
 
@@ -67,6 +66,7 @@ c.tabs.last_close = "close"
 
 config.bind('<Shift-r>', 'restart')
 
+#searchengines
 c.url.searchengines = {
 
     'DEFAULT':  'https://searx.ninja/search?q={}',
@@ -75,8 +75,11 @@ c.url.searchengines = {
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
+# defalt pacges
 c.url.default_page = 'https://searx.alec.ninja/'
 c.url.start_pages = 'https://searx.alec.ninja/'
+c.editor.command = ["st", "-t", "edit_text", "-e", "nvim", "-f", "{}"]
+
 # downloads location
 c.downloads.location.directory = "~/download"
 
@@ -129,7 +132,7 @@ c.colors.contextmenu.disabled.bg = base01
 c.colors.contextmenu.disabled.fg = base04
 
 # Color of the scrollbar handle in the completion view.
-c.colors.completion.scrollbar.fg = base05
+c.colors.completion.scrollbar.fg = basebl
 
 # Color of the scrollbar in the completion view.
 c.colors.completion.scrollbar.bg = base00
