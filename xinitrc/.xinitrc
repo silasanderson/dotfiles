@@ -1,3 +1,4 @@
+# Default programs
 #!/bin/sh
 
 userresources=$HOME/.Xresources
@@ -49,8 +50,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-setxkbmap -option caps:escape
+Xorg -nocursor
+# Default programs
+export EDITOR="nvim"
+export TERMINAL="st"
+export BROWSER="qutebrowser"
 
+ttp.sh
+
+setxkbmap colemak_wide
 # start dwm 
 
 while true; do 
