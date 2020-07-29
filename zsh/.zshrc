@@ -1,5 +1,3 @@
-
-
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -7,9 +5,15 @@ setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
 # History in cache directory:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=~/.cache/zsh/history
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+export HISTTIMEFORMAT="[%F %T] "
+setopt HIST_FIND_NO_DUPS
+# following should be turned off, if sharing history via setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
@@ -87,8 +91,6 @@ alias sudo="doas"
 
 alias S="doas"
 
-alias bat="cat /sys/class/power_supply/BAT0/capacity && cat /sys/class/power_supply/BAT1/capacity"
-
 alias A='alsamixer'
 
 alias ttp="~/script/ttp.sh"
@@ -97,19 +99,21 @@ alias wttr="~/script/wttr.sh"
 
 alias ntest="~/script/ntest.sh"
 
+alias bat="~/script/bat.sh"
+
 alias us="setxkbmap us"
 
 alias colemakwide="setxkbmap colemak_wide_alt"
 
 alias colemak="setxkbmap colemak_wide"
 
-# Default programs
-export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="qutebrowser"
+alias ek="doas nvim /usr/share/X11/xkb/symbols/colemak_wide"
 
-xmodmap -e 'keycode 66 = Tab'
-xmodmap -e 'keycode 23 = Escape'
+alias ep="doas nvim /etc/profile"
+
+alias ex="doas nvim ~/.xinitrc"
+
+alias ez="doas nvim ~/.zshrc"
 # Load syntax highlighting; should be last.
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
