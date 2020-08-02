@@ -19,6 +19,21 @@ basebl = "#000000"
 basewh = "#ffffff"
 baseg  = "#5eff99"
 
+# Bind
+config.bind(';w',   'hint all window')
+
+config.bind(',q',   'open https://qutebrowser.org/doc/help/settings.html')
+config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
+config.bind(',ch',  'open https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/img/cheatsheet-big.png')
+config.bind (',gs', 'open https://github.com/silasanderson')
+config.bind (',y',  'open https://www.youtube.com')
+config.bind (',d',  'open https://github.com/silasanderson/dotfiles')
+config.bind (',a',  'open https://artstation.com')
+
+config.bind('m',    'set-cmd-text -s :quickmark-load')
+
+#config.bind(',w', '')
+
 # Dark mode 
 c.colors.webpage.prefers_color_scheme_dark = True
 
@@ -52,12 +67,17 @@ c.scrolling.bar = "when-searching"
 
 #c.tabs.position = "left"
 
-config.bind('xx', 'config-cycle tabs.show always switching')
+config.bind('xt', 'config-cycle tabs.show always switching')
 
-config.bind('xz', 'config-cycle statusbar.hide')
+config.bind('xb', 'config-cycle statusbar.show always in-mode')
 
-#config.bind('xc', 'config-cycle statusbar.hide ;; config-cycle tabs.show always switching')
+config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always switching')
+
 c.tabs.last_close = "close"
+
+c.statusbar.show = "in-mode"
+
+c.tabs.show = "switching"
 
 # Rebind
 #config.bind('<Shift-k>', 'tab-next')
