@@ -1,0 +1,85 @@
+alias vim="nvim"
+
+alias lf="doas lf"
+
+alias V="nvim"
+
+alias P="doas pacman"
+
+alias doit="doas"
+
+alias S='doas $(history -p !!)'
+
+alias A='alsamixer'
+
+alias ttp="~/script/ttp.sh"
+
+alias wttr="~/script/wttr.sh"
+
+alias ntest="~/script/ntest.sh"
+
+alias bat="~/script/bat.sh"
+
+alias us="setxkbmap us"
+
+alias colemakwide="setxkbmap colemak_wide_alt"
+
+alias colemak="setxkbmap colemak_wide"
+
+alias ek="doas nvim /usr/share/X11/xkb/symbols/colemak_wide"
+
+alias ep="$EDITOR /etc/profile"
+
+alias ex="$EDITOR ~/.xinitrc"
+
+alias ez="$EDITOR ~/.zshrc"
+
+alias eq="$EDITOR ~/.config/qutebrowser/config.py"
+
+alias ev="$EDITOR ~/.config/nvim/init.vim"
+
+alias ealias="$EDITOR ~/.config/aliasrc"
+
+alias es="$EDITOR ~/.config/sxhkd/sxhkdrc"
+
+alias est="$EDITOR ~/repo/st-0.8.3/config.h"
+
+alias edwm="$EDITOR ~/repo/dwm-6.2/config.h"
+
+alias ea="$EDITOR ~/.config/alacritty/alacritty.yml"
+
+alias psyu="doas pacman -Syu"
+
+
+
+# navigation
+alias ..='cd ..' 
+alias ...='cd ../..'
+
+
+# broot
+alias br='br -dhp'
+alias bs='br --sizes'
+
+# Changing "ls" to "exa"
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+
+# adding flags
+alias cp="cp -i"                          # confirm before overwriting something
+alias df='df -h'                          # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+alias lynx='lynx -cfg=~/.lynx/lynx.cfg -lss=~/.lynx/lynx.lss -vikeys'
+alias vifm='./.config/vifm/scripts/vifmrun'
+
+# the terminal rickroll
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+
+# bare git repo alias for dotfiles
+alias config="/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+
+# termbin
+alias tb="nc termbin.com 9999"
+
