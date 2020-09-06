@@ -81,39 +81,10 @@ bindkey '^[[P' delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-alias vim="nvim"
+# insert_doas () { zle beginning-of-line; zle -U "doas " }
+# zle -N insert-doas insert_doas
+# bindkey "^d" insert-doas
 
-alias V="nvim"
-
-alias P="doas pacman"
-
-alias sudo="doas"
-
-alias S="doas"
-
-alias A='alsamixer'
-
-alias ttp="~/script/ttp.sh"
-
-alias wttr="~/script/wttr.sh"
-
-alias ntest="~/script/ntest.sh"
-
-alias bat="~/script/bat.sh"
-
-alias us="setxkbmap us"
-
-alias colemakwide="setxkbmap colemak_wide_alt"
-
-alias colemak="setxkbmap colemak_wide"
-
-alias ek="doas nvim /usr/share/X11/xkb/symbols/colemak_wide"
-
-alias ep="doas nvim /etc/profile"
-
-alias ex="doas nvim ~/.xinitrc"
-
-alias ez="doas nvim ~/.zshrc"
 # Load syntax highlighting; should be last.
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
