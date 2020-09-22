@@ -19,9 +19,12 @@ basebl = "#000000"
 basewh = "#ffffff"
 baseg  = "#5eff99"
 
+c.fonts.default_family = "JetBrainsMono"
+c.fonts.default_size = "12pt" 
+
+
 # Bind
 config.bind(';w',   'hint all window')
-
 config.bind(',q',   'open https://qutebrowser.org/doc/help/settings.html')
 config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
 config.bind(',ch',  'open https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/img/cheatsheet-big.png')
@@ -29,33 +32,30 @@ config.bind (',gs', 'open https://github.com/silasanderson')
 config.bind (',y',  'open https://www.youtube.com')
 config.bind (',d',  'open https://github.com/silasanderson/dotfiles')
 config.bind (',a',  'open https://artstation.com')
-
+config.unbind('<d>', mode='normal')
 config.bind('m',    'set-cmd-text -s :quickmark-load')
-
-#config.bind(',w', '')
+config.bind('xt', 'config-cycle tabs.show always switching')
+config.bind('xb', 'config-cycle statusbar.show always in-mode')
+config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always switching')
+config.bind('<Shift-r>', 'restart')
+config.bind( ',m', 'spawn mpv {url}')
+config.bind( ',M', 'hint links spawn mpv {hint-url}')
+#config.bind('<Shift-k>', 'tab-next')
+#config.bind('<Shift-j>', 'tab-prev')
 
 # Dark mode 
 c.colors.webpage.prefers_color_scheme_dark = True
-
 config.set("colors.webpage.darkmode.enabled", True)
-
 c.colors.webpage.darkmode.enabled = True
-
 c.qt.args = [ "blink-settings=darkMode=4" ]  
-
 c.colors.webpage.darkmode.policy.images = "smart"
 
 # tabs
 c.tabs.indicator.width = 0
-
 c.tabs.padding = {'top': 1, 'bottom': 1, 'left': 2, 'right': 2}
-
 c.tabs.position = 'top'
-
 #c.tabs.title.format = '{index}'
-
 #c.tabs.title.format_pinned = '{index}'
-
 c.tabs.width = 31
 
 # Bookmarks
@@ -66,25 +66,9 @@ config.unbind('<d>', mode='normal')
 c.scrolling.bar = "when-searching"
 
 #c.tabs.position = "left"
-
-config.bind('xt', 'config-cycle tabs.show always switching')
-
-config.bind('xb', 'config-cycle statusbar.show always in-mode')
-
-config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always switching')
-
 c.tabs.last_close = "close"
-
 c.statusbar.show = "in-mode"
-
 c.tabs.show = "switching"
-
-# Rebind
-#config.bind('<Shift-k>', 'tab-next')
-
-#config.bind('<Shift-j>', 'tab-prev')
-
-config.bind('<Shift-r>', 'restart')
 
 #searchengines
 c.url.searchengines = {
@@ -102,6 +86,9 @@ c.editor.command = ["st", "-t", "edit_text", "-e", "nvim", "-f", "{}"]
 
 # downloads location
 c.downloads.location.directory = "~/download"
+
+###################################################
+###################################################
 
 # set qutebrowser colors
 
