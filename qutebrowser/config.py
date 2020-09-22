@@ -43,6 +43,10 @@ config.bind( ',M', 'hint links spawn mpv {hint-url}')
 #config.bind('<Shift-k>', 'tab-next')
 #config.bind('<Shift-j>', 'tab-prev')
 
+# defalt text editor
+c.editor.command = [ 'st', '-e', 'nvim', '{file}']
+c.editor.encoding = 'utf-8'
+
 # Dark mode 
 c.colors.webpage.prefers_color_scheme_dark = True
 config.set("colors.webpage.darkmode.enabled", True)
@@ -73,6 +77,7 @@ c.tabs.show = "switching"
 #searchengines
 c.url.searchengines = {
 
+    'DEFAULT':  'https://searx.ninja/search?q={}',
     'DEFAULT':  'https://searx.ninja/search?q={}',
     '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
     '!w':       'https://en.wikipedia.org/wiki/{}',
