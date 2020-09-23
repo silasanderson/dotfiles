@@ -1,66 +1,35 @@
-# Default programs
 #!/bin/sh
+# ~/.xinitrc
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# merge in defaults and keymaps
-sxhkd &
-if [ -f $sysresources ]; then
-
-
-
-
-
-
-
-
-    xrdb -merge $sysresources
-
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
-
-if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
-    xrdb -merge "$userresources"
-
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-# start some nice programs
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
-
-Xorg -nocursor
-# Default programs
+# set defaults
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERM="st"
 export BROWSER="qutebrowser"
 
-ttp.sh
+# set backlight
+doas xbacklight -set 50
 
+# set trackpoint to full speed
+xinput set-prop "TPPS/2 IBM TrackPoint" "332" 1.0
+
+# set key repeat rate. delay 300 milisecond, 80 per sec
+xset r rate 300 80
+
+# set  
 setxkbmap colemak_wide
-# start dwm 
 
+# run "togele track pad" script
+ttp
+
+# set wallpaper
+xwallpaper --zoom ~/.config/gloryhammer.jpg
+
+#xcompmgr &
+unclutter &
+dunst &
+pulseaudio &
+
+# start dwm 
 while true; do 
 	dwm >/dev/null 2>&1
 done
