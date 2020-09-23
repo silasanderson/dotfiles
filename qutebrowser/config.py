@@ -18,10 +18,11 @@ base0F = "#C77C48"
 basebl = "#000000"
 basewh = "#ffffff"
 baseg  = "#5eff99"
+base =   "https://searx.ninja"
+search = "https://searx.ninja/search?q={}"
 
 c.fonts.default_family = "JetBrainsMono"
 c.fonts.default_size = "12pt" 
-
 
 # Bind
 config.bind(';w',   'hint all window')
@@ -32,14 +33,14 @@ config.bind (',gs', 'open https://github.com/silasanderson')
 config.bind (',y',  'open https://www.youtube.com')
 config.bind (',d',  'open https://github.com/silasanderson/dotfiles')
 config.bind (',a',  'open https://artstation.com')
-config.unbind('<d>', mode='normal')
+#config.unbind('https://google.com/search?q={}<d>', mode='normal')
 config.bind('m',    'set-cmd-text -s :quickmark-load')
 config.bind('xt', 'config-cycle tabs.show always switching')
 config.bind('xb', 'config-cycle statusbar.show always in-mode')
 config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always switching')
 config.bind('<Shift-r>', 'restart')
-config.bind( ',m', 'spawn mpv {url}')
-config.bind( ',M', 'hint links spawn mpv {hint-url}')
+config.bind( ';M', 'spawn mpv {url}')
+config.bind( ';m', 'hint links spawn mpv {hint-url}')
 #config.bind('<Shift-k>', 'tab-next')
 #config.bind('<Shift-j>', 'tab-prev')
 
@@ -74,19 +75,28 @@ c.tabs.last_close = "close"
 c.statusbar.show = "in-mode"
 c.tabs.show = "switching"
 
-#searchengines
+# urls
 c.url.searchengines = {
-
-    'DEFAULT':  'https://searx.ninja/search?q={}',
-    'DEFAULT':  'https://searx.ninja/search?q={}',
-    '!gh':      'https://github.com/search?o=desc&q={}&s=stars',
-    '!w':       'https://en.wikipedia.org/wiki/{}',
+    "DEFAULT": search,
+    "!g":   "https://google.com/search?q={}",
+    "!gh":  'https://github.com/search?o=desc&q={}&s=stars',
+    '!w':   'https://en.wikipedia.org/wiki/{}',
     '!yt':      'https://www.youtube.com/results?search_query={}'
 }
 
+#searchengines
+#c.url.searchengines = {
+
+#    'DEFAULT':  'https://searx.ninja/search?q={}',
+ #   'gh':      'https://github.com/search?o=desc&q={}&s=stars',
+  #  'w':       'https://en.wikipedia.org/wiki/{}',
+   # 'g':       'https://www.google.com/results?search_query={}'
+    #'yt';      'https://www.youtube.com/results?search_query={}'
+#}
+
 # defalt pacges
-c.url.default_page = 'https://searx.alec.ninja/'
-c.url.start_pages = 'https://searx.alec.ninja/'
+c.url.default_page = base
+c.url.start_pages = base
 c.editor.command = ["st", "-t", "edit_text", "-e", "nvim", "-f", "{}"]
 
 # downloads location
