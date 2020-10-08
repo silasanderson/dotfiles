@@ -1,4 +1,8 @@
-alias vim="nvim"
+alias quake=" ~/nquake/ezquake-linux-x86_64"
+
+alias vimwiki="$EDITOR ~/vimwiki/index.wiki"
+
+alias equake="nvim ~/nquake/ezquake/configs/silas.cfg"
 
 alias wall-black="xwallpaper --center download/black.png"
 
@@ -36,9 +40,9 @@ alias ea="$EDITOR ~/.config/aliasrc"
 
 alias es="$EDITOR ~/.config/sxhkd/sxhkdrc"
 
-alias est="$EDITOR ~/repo/st/config.h"
+alias est="cd ~repo/st && $EDITOR ~/repo/st/config.h"
 
-alias edwm="$EDITOR ~/repo/dwm/config.h"
+alias edwm="cd ~/repo/dwm && $EDITOR ~/repo/dwm/config.h"
 
 alias ec="edit-command-line"
 
