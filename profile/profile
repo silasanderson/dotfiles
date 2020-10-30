@@ -16,15 +16,19 @@ appendpath () {
 appendpath '/usr/local/sbin'
 appendpath '/usr/local/bin'
 appendpath '/usr/bin'
-appendpath '~/script'
+appendpath '/home/silas/script'
+appendpath '/home/silas/.local/bin/statusbar'
+appendpath '/home/silas/.local/bin'
+
 unset -f appendpath
 
 # Default programs:
 export EDITOR="nvim"
 export TERM="st"
 export BROWSER="qutebrowser"
-PATH=$PATH:~/script
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]] && [[ $(whoami) = silas ]]; then exec startx; fi
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty2 ]] && [[ $(whoami) = silas ]]; then exec startx ~/.config/xinitrc; fi
 export PATH
 
 # Load profiles from /etc/profile.d
