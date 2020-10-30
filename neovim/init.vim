@@ -1,26 +1,43 @@
 set nocompatible
+set hidden
+set noshowmode
 
 let mapleader=" "
+let maplocalleader=" "
+" set spellfile="/home/silas/.local/share/nvim/site/spell/en.utf-8.spl"
+" set spellfile="/usr/share/dict/words"
+
+cmap Ww w !sudo tee > /dev/null %
+cmap Q q!
+
+" command <Wq> <:w !sudo tee %>
 
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
-Plug 'tomasiser/vim-code-dark'
-
+" Plug 'reini-1/vim-code-darker'
+Plug 'vim-scripts/AutoComplPop'
+" Plug 'vimoxide/vim-cinnabar'
+" Plug 'aonemd/kuroi.vim'
+Plug 'lucasprag/simpleblack'
 call plug#end()
 
 " Use system clipboard
+
+filetype plugin indent on
+
 set clipboard+=unnamedplus
 
 set wildmode=longest,list,full
 
-filetype plugin on
+" filetype plugin on
 
 syntax enable
 
@@ -28,35 +45,72 @@ syntax enable
 autocmd InsertEnter * norm zz
 
 " Color
-colorscheme codedark
+colorscheme simpleblack
+set termguicolors
+set t_Co=256
+set background=dark
+" hi Normal guibg=NONE ctermbg=NONE
+" autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
+
+let g:lightline = {
+      \ 'mode_map': {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'VL',
+        \ "\<C-v>": 'VB',
+        \ 'c' : 'C',
+        \ 's' : 'S',
+        \ 'S' : 'SL',
+        \ "\<C-s>": 'SB',
+        \ 't': 'T',
+        \ },
+      \ }
 
 " set mouse=a
 set encoding=utf-8
 set relativenumber
 set nohlsearch
 set noerrorbells
-set tabstop=4 softtabstop=4
+set laststatus=2
+" Tabs
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+
+set splitbelow splitright
 set shiftwidth=4
-set expandtab
 set smartindent
 set nu
 set nowrap
 set smartcase
 set noswapfile
+set splitright
 set nobackup
 set undofile
 set incsearch
 set scrolloff=8
 set noshowmode
+set completeopt=menuone,longest
+set complete+=kspell
+" set spell
+" set nospell
+set spelllang=en_us
 
 " Shortcutting split navigation
 map <A-h> <C-w>h
 map <A-j> <C-w>j
 map <A-k> <C-w>k
 map <A-l> <C-w>l
+map <A-<> <C-w>>
+map <A->> <C-w><
 
-nnoremap <A-J> gt
-nnoremap <A-K> gT
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>g :Goyo<cr>
+nnoremap <C-j>      gt
+nnoremap <C-k>      gT
 nnoremap <A-t>     :tabnew<CR>
 nnoremap <A-q>     :close<CR>
 nnoremap <A-tab>   :call ToggleNetrw()<cr>
@@ -67,14 +121,13 @@ nnoremap <A-o>     :find
 
 let g:netrw_banner=0        " disable annoying banner
 "let g:netrw_browse_split=4  " open in prior window
-let g:netrw_winsize = 20
+let g:netrw_winsize = 15
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 set path+=**
-
 
 function! OpenToRight()
 	:normal v
@@ -108,6 +161,7 @@ function! NetrwMappings()
 		noremap <buffer> V :call OpenToRight()<cr>
 		noremap <buffer> H :call OpenBelow()<cr>
 		noremap <buffer> T :call OpenTab()<cr>
+		noremap <buffer> <.> gh
 endfunction
 
 augroup netrw_mappings
