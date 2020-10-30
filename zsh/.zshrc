@@ -1,20 +1,18 @@
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+export TERM=xterm-256color
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
-# History in cache directory:
-HISTSIZE=1000000
-SAVEHIST=1000000
-HISTFILE=~/.cache/zsh/history
-setopt EXTENDED_HISTORY
-setopt INC_APPEND_HISTORY
-export HISTTIMEFORMAT="[%F %T] "
-setopt HIST_FIND_NO_DUPS
 
-# following should be turned off, if sharing history via setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
+# History in cache directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Enable searching through history
+bindkey '^R' history-incremental-pattern-search-backward
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
@@ -28,15 +26,23 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+# Auto complete with case insenstivity
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'left' vi-backward-char
+bindkey -M menuselect 'down' vi-down-line-or-history
+bindkey -M menuselect 'up' vi-up-line-or-history
+bindkey -M menuselect 'right' vi-forward-char
+
 bindkey -v '^?' backward-delete-char
 
 # Change cursor shape for different vi modes.
@@ -72,20 +78,20 @@ lfcd () {
 }
 bindkey -s '^o' 'lfcd\n'
 
-bindkey -s '^a' 'bc -l\n'
+bindkey '^ ' 'autosuggest-accept'
 
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 bindkey '^[[P' delete-char
 
-# Edit line in vim with ctrl-e:
+# Edit line in vim buffer ctrl-v
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^v' edit-command-line
+# Enter vim buffer from normal mode
+autoload -U edit-command-line && zle -N edit-command-line && bindkey -M vicmd "^v" edit-command-line
 
-# insert_doas () { zle beginning-of-line; zle -U "doas " }
-# zle -N insert-doas insert_doas
-# bindkey "^d" insert-doas
 
-# Load syntax highlighting; should be last.
+PROMPT='%F{cyan}%3~%f %F{green}% |> %F{white}'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yello"
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
