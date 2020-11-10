@@ -18,13 +18,15 @@ base0F = "#C77C48"
 basebl = "#000000"
 basewh = "#ffffff"
 baseg  = "#5eff99"
-base =   "https://searx.ninja"
+base =   "~/.local/share/qutebrowser/startpage/index.html"
+# base =   "about:blank"
 search = "https://searx.ninja/search?q={}"
 
-c.fonts.default_family = "JetBrainsMono"
-c.fonts.default_size = "12pt" 
+c.fonts.default_family = "Hack"
+c.fonts.default_size = "10pt" 
 
 # Bind
+config.bind(' q',   'quit')
 config.bind(';w',   'hint all window')
 config.bind(',q',   'open https://qutebrowser.org/doc/help/settings.html')
 config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
@@ -37,23 +39,42 @@ config.bind (',a',  'open https://artstation.com')
 config.bind('m',    'set-cmd-text -s :quickmark-load')
 config.bind('xt', 'config-cycle tabs.show always switching')
 config.bind('xb', 'config-cycle statusbar.show always in-mode')
-config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always switching')
-config.bind('<Shift-r>', 'restart')
-config.bind( ';M', 'spawn mpv {url}')
-config.bind( ';m', 'hint links spawn mpv {hint-url}')
+config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
+config.bind('<Ctrl-r>', 'restart')
+config.bind(';M', 'spawn mpv {url}')
+config.bind(';m', 'hint links spawn mpv {hint-url}')
+config.bind(';D', 'hint {right-click}')
+config.bind('dd', 'tab-close')
+config.bind('<Shift-d>', 'tab-clone')
+config.bind('<Ctrl-e>', 'scroll down')
+config.bind('<Ctrl-y>', 'scroll up')
+config.bind('<Alt-Escape>', 'leave-mode', mode='passthrough')
+config.unbind('<Shift-Escape>', mode='passthrough')
 #config.bind('<Shift-k>', 'tab-next')
 #config.bind('<Shift-j>', 'tab-prev')
+# config.bind(',d' 'config-cycle content.user_stylesheets = '~/.local/share/qutebrowser/stylesheet/discord.css' ;; content.user_stylesheets ')
+
+# c.content.user_stylesheets = "~/solarized-everything-css/css/apprentice/apprentice-all-sites.css"
 
 # defalt text editor
 c.editor.command = [ 'st', '-e', 'nvim', '{file}']
 c.editor.encoding = 'utf-8'
 
 # Dark mode 
-c.colors.webpage.prefers_color_scheme_dark = True
-config.set("colors.webpage.darkmode.enabled", True)
-c.colors.webpage.darkmode.enabled = True
+
+# c.colors.webpage.prefers_color_scheme_dark = True
+# config.set("colors.webpage.darkmode.enabled", True)
+# c.colors.webpage.darkmode.enabled = True
+# c.colors.webpage.darkmode.policy.images = "smart"
+
 c.qt.args = [ "blink-settings=darkMode=4" ]  
-c.colors.webpage.darkmode.policy.images = "smart"
+ccw = c.colors.webpage
+ccw.bg = "black"
+ccw.darkmode.enabled = True
+ccw.darkmode.threshold.background = 100
+ccw.darkmode.threshold.text = 256 - ccw.darkmode.threshold.background
+ccw.darkmode.policy.images = 'smart'
+ccw.prefers_color_scheme_dark = True
 
 # tabs
 c.tabs.indicator.width = 0
@@ -68,20 +89,22 @@ config.unbind('<d>', mode='normal')
 
 # scroll bar
 
-c.scrolling.bar = "when-searching"
+c.scrolling.bar = "never"
 
 #c.tabs.position = "left"
 c.tabs.last_close = "close"
 c.statusbar.show = "in-mode"
-c.tabs.show = "switching"
+c.tabs.show = "never"
 
 # urls
 c.url.searchengines = {
     "DEFAULT": search,
-    "!g":   "https://google.com/search?q={}",
-    "!gh":  'https://github.com/search?o=desc&q={}&s=stars',
-    '!w':   'https://en.wikipedia.org/wiki/{}',
-    '!yt':      'https://www.youtube.com/results?search_query={}'
+    "g":   "https://google.com/search?q={}",
+    "gh":  'https://github.com/search?o=desc&q={}&s=stars',
+    'w':   'https://en.wikipedia.org/wiki/{}',
+    'aw':   'https://wiki.archlinux.org/index.php/{}',
+    'ud':   'https://www.urbandictionary.com/define.php?term={}',
+    'y':   'https://www.youtube.com/results?search_query={}'
 }
 
 #searchengines
