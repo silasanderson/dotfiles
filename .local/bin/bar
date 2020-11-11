@@ -1,6 +1,0 @@
-#!/bin/sh
-
-while true; do
-		xsetroot -name " $(mt) | $(date "+%H:%M:%S") | bat $(bat) | V $(pamixer --get-volume-human) | wifi $(internet) | bri $(xbacklight -get)"
-	sleep 1
-done
