@@ -7,4 +7,4 @@ my configuashon files and other stuff
 * edit nvim
 
 ## screen shots
-![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/2020-11-01-%4000-30-28-scrot.png)
+![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot.png)
