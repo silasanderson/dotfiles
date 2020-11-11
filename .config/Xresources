@@ -1,0 +1,44 @@
+! special
+/* sxiv.foreground:#444444 */
+Xcursor.size: 16
+*.foreground:   #FFFFFF
+*.background:   #000000
+
+! black
+*.color0:       #000000
+*.color8:       #444444
+
+! red
+*.color1:       #DE1A0B
+*.color9:       #f94144
+
+! green
+*.color2:       #39FF14
+*.color10:      #75d146
+
+! yellow
+*.color3:       #ffd500
+*.color11:      #f6aa1c
+
+! blue
+*.color4:       #268bd2
+*.color12:      #23AAB6
+
+! magenta
+*.color5:       #d100d1
+*.color13:      #c583d0
+
+! cyan
+*.color6:       #32d0fc
+*.color14:      #8adaf1
+
+! white
+*.color7:       #ffffff
+*.color15:      #eae0be
+
+dwm.normbgcolor:      #000000
+dwm.normbordercolor:  #444444
+dwm.normfgcolor:      #bbbbbb
+dwm.selfgcolor:       #ffffff
+dwm.selbordercolor:   #f94144
+dwm.selbgcolor:       #005577

@@ -1,0 +1,36 @@
+#!/bin/sh
+
+case $1 in
+		*v)
+		  clear
+			curl 'v2d.wttr.in/Ashfield,Ma?Qm'
+				;;
+		 *q)
+		  clear
+			curl 'wttr.in/Ashfield,Ma?mQ'
+				;;
+		  "")
+			curl 'wttr.in/Ashfield,Ma?mQ0'
+				;;
+			*h)
+		  clear
+			curl 'wttr.in/:help'
+			;;
+		  *lf)
+		  clear
+			curl 'wttr.in/Ashfield,Ma?m'
+			;;
+			*l)
+		  clear
+			curl 'wttr.in/Ashfield,Ma?nm'
+			;;
+			*r)
+		  clear
+			chafa --clear -w 9 -c full --symbols braille --fill braille https://radar.weather.gov/lite/N0R/BOX_loop.gif
+			;;
+		  *)
+			echo wttr: Unknown option argument: "$@"
+		  echo More info with "wttr -h"
+			;;
+
+esac
