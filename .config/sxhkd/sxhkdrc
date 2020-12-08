@@ -1,47 +1,62 @@
-F1
+Insert
 		dmenu-scrot
 
-F1 + super
+XF86Tools
 		tpd
 
-F2
-    setbg ~/media/image/wallpaper/
+super + XF86Tools
+	toggleprogram hhpc
 
-F2 + super
+XF86Favorites
+    setbg /mda/image/wallpaper/
+
+XF86Favorites + super
     setbg .config/black.png
 
+#F12
+#		beep -f 5000 -l 50 -r 2
+
 XF86MonBrightnessDown
-    doas xbacklight -dec 5
+    doas xbacklight -dec 5 && pkill -RTMIN+9 dwmblocks
 
 XF86MonBrightnessUp
-    doas xbacklight -inc 5
+    doas xbacklight -inc 5 && pkill -RTMIN+9 dwmblocks
 
 XF86Display
 		displayselect
 
+# XF86WLAN
+#		if [ $(cat /sys/class/net/w*/operstate 2>/dev/null) = up ]; then doas rfkill block all && notify-send -t 4000 "network disabled"; else doas rfkill unblock all && notify-send -t 4000 "network enabled"; fi
+
+super + A
+	toggleprogram picom --experimental-backends
+
 super + w
     $BROWSER
 
-super +W
-    networkmanager_dmenu
+super + ctrl + w
+	qutebrowser --target private-window
 
-super + r
-    $TERM -e lf
+super +W
+    dmenu-nm
+
+# super + r
+#      st -e lf
 		
 super + R
-    $TERM -e wttr -r
+    wttr -sxhkd
 
 super + H
-    $TERM -e htop
+		$TERM -e htop
 
 XF86AudioRaiseVolume
-    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%"
+    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%" && pkill -RTMIN+10 dwmblocks
 
 XF86AudioLowerVolume
-    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%"
+    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%" && pkill -RTMIN+10 dwmblocks
 
 XF86AudioMute
-    pactl set-sink-mute 0 toggle && if pamixer --get-mute = true; then notify-send -t 5000 "mute"; else notify-send -t 5000 "unmute"; fi
+    pactl set-sink-mute 0 toggle && pkill -RTMIN+10 dwmblocks && if pamixer --get-mute = true; then herbe mute; else herbe unmute; fi
 
 XF86AudioMicMute
     pactl set-source-mute 1 toggle
@@ -55,11 +70,11 @@ super + Return
 super + semicolon
     dmenu_run
 
-super + Return + shift
-    tdrop -w 1916 -y 0 $TERM -n "float"
+# super + Return + shift
+#    tdrop -ma -w 1914 -y 0 $TERM -n "float"
 
-super + apostrophe
-    tdrop -w 60% -y 30% -x 20% -n 1 st -n "cfloat" -e bc -lq
+# super + apostrophe
+#    tdrop -w 60% -y 30% -x 20% -n 1 st -n "float" -e bc -lq
 
 super + D
     qutebrowser --target window https://discord.com/channels/@me
@@ -72,3 +87,27 @@ super + s
 
 super + S
 		searchq
+
+# super + q
+#		xdo kill
+
+#super + f
+		#bspfullscreen
+
+#	Send window to desktop
+#super + shift + {0-9}
+  #crystal --send {0-9}
+
+# Send window to desktop and swap to desktop
+#super + control + {0-9}
+  #bspc node -d {0-9} && bspc desktop -f {0-9}
+
+# Swap window with direction
+#super + shift + {h,j,k,l}
+	#bspc node -s {west,south,north,east}
+
+#super + Q
+		#bspc quit
+
+#super + {h,j,k,l}
+	#bspc node -f {west,south,north,east}

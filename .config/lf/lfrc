@@ -11,30 +11,42 @@ set previewer pistol
 set ignorecase true
 set relativenumber
 set dircounts
-set sortby name
+# set sortby name
 
 # Custom Functions
 
 cmd q quit
 cmd wq quit
 
+cmd browser $($BROWSER $f)
 
 cmd sxiv sxiv $fx
 
+cmd sxiv $f | xclip -o
 
 cmd open ${{
     case $(file --mime-type $f -b) in
     text/*) $EDITOR $fx;;
-	image/*) sxiv $fx;; 
+	image/*) $VIEW $fx;; 
 	audio/*) mpv $f ;;
 	video/*) mpv $fx ;;
-	application/pdf|application/vnd*|application/epub*) zathura $fx ;;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt $fx - | nvim ;;
+	application/pdf|application/vnd*|application/epub*) $READER $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
 
 cmd yank-lines ${{
 echo $fx | xclip 
+}}
+
+cmd mkscript ${{
+  printf "script name: "
+  read ans
+  touch $ans
+	echo "#!/bin/sh"|cat - $ans > /tmp/out && mv /tmp/out $ans
+	chmod +x $ans
+	$EDITOR $ans
 }}
 
 cmd mkdir ${{
@@ -222,9 +234,10 @@ map <enter> open
 map mf mkfile
 map mr sudomkfile
 map md mkdir
-map ms $mkscript
+map ms mkscript
 map ch chmod
 map bg setwallpaper
+map bb browser
 map o open_config
 map br $vimv $fx
 map r rename
@@ -236,12 +249,16 @@ map U unselect
 
 # Movement
 map gtr cd ~/.local/share/Trash/files
+map gt. cd ~/tmp/
 
-map gw cd ~/media/image/wallpaper
+map gw cd /mda/image/wallpaper
+map gi cd /mda/image
 
+map glb cd ~/.local/bin/
 map gd cd ~/download
 
-map gs. cd ~/script
+map gs cd ~/script
+map gm cd /mda
 
 map gr. cd ~/repo
 map grm cd ~/repo/dmenu
@@ -253,7 +270,8 @@ map gc. cd ~/.config
 map gcl cd ~/.config/lf/
 map gcnv cd ~/.config/nvim/
 map gcq cd ~/.config/qutebrowser/
-map gl cd ~/.local
+map gl. cd ~/.local
+map glb cd ~/.local/bin/
 map ge cd /etc
 map gu cd /usr
 map gUs cd /usr/share

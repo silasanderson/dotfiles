@@ -1,32 +1,31 @@
-# set some defalt colors
-base00 = "#000000"
-base01 = "#3D4048"
-base02 = "#53555D"
-base03 = "#686A71"
-base04 = "#7E8086"
-base05 = "#939599"
-base06 = "#A9AAAE"
-base07 = "#BEBFC2"
-base08 = "#B21889"
-base09 = "#786DC5"
-base0A = "#438288"
-base0B = "#5eff99"
-base0C = "#00A0BE"
-base0D = "#790EAD"
-base0E = "#B21889"
-base0F = "#C77C48"
-basebl = "#000000"
-basewh = "#ffffff"
-baseg  = "#5eff99"
-base =   "~/.local/share/qutebrowser/startpage/index.html"
-# base =   "about:blank"
-search = "https://searx.ninja/search?q={}"
+import subprocess
+import os
+from qutebrowser.api import interceptor
 
-c.fonts.default_family = "Hack"
-c.fonts.default_size = "10pt" 
+# taken from https://qutebrowser.org/doc/help/configuring.html
+def read_xresources(prefix):
+    """
+    read settings from xresources
+    """
+    props = {}
+    x = subprocess.run(["xrdb", "-query"], stdout=subprocess.PIPE)
+    lines = x.stdout.decode().split("\n")
+    for line in filter(lambda l: l.startswith(prefix), lines):
+        prop, _, value = line.partition(":\t")
+        props[prop] = value
+    return props
+
+
+xresources = read_xresources("*")
+
+base =   "~/.local/share/qutebrowser/startpage/index.html"
+search = "https://searx.fmac.xyz/search?q={}"
+
+# c.fonts.default_family = "Hack"
+c.fonts.default_size = "12pt" 
 
 # Bind
-config.bind(' q',   'quit')
+# config.bind(' q',   'quit')
 config.bind(';w',   'hint all window')
 config.bind(',q',   'open https://qutebrowser.org/doc/help/settings.html')
 config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
@@ -37,12 +36,14 @@ config.bind (',d',  'open https://github.com/silasanderson/dotfiles')
 config.bind (',a',  'open https://artstation.com')
 #config.unbind('https://google.com/search?q={}<d>', mode='normal')
 config.bind('m',    'set-cmd-text -s :quickmark-load')
-config.bind('xt', 'config-cycle tabs.show always switching')
-config.bind('xb', 'config-cycle statusbar.show always in-mode')
+# config.bind('xt', 'config-cycle tabs.show always switching')
+# config.bind('xb', 'config-cycle statusbar.show always in-mode')
+# config.bind('<Alt-b>', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
+config.bind('<Alt-b>', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
 config.bind('<Ctrl-r>', 'restart')
 config.bind(';M', 'spawn mpv {url}')
-config.bind(';m', 'hint links spawn mpv {hint-url}')
+config.bind(';m', 'hint links spawn -d mpv {hint-url}')
 config.bind(';D', 'hint {right-click}')
 config.bind('dd', 'tab-close')
 config.bind('<Shift-d>', 'tab-clone')
@@ -62,12 +63,13 @@ c.editor.encoding = 'utf-8'
 
 # Dark mode 
 
-# c.colors.webpage.prefers_color_scheme_dark = True
-# config.set("colors.webpage.darkmode.enabled", True)
-# c.colors.webpage.darkmode.enabled = True
-# c.colors.webpage.darkmode.policy.images = "smart"
+c.colors.webpage.prefers_color_scheme_dark = True
+config.set("colors.webpage.darkmode.enabled", True)
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.darkmode.policy.images = "smart"
 
 c.qt.args = [ "blink-settings=darkMode=4" ]  
+# c.qt.args = ['blink-settings=forceDarkModeEnabled=true,forceDarkModeInversionAlgorithm=3,...']
 ccw = c.colors.webpage
 ccw.bg = "black"
 ccw.darkmode.enabled = True
@@ -99,12 +101,12 @@ c.tabs.show = "never"
 # urls
 c.url.searchengines = {
     "DEFAULT": search,
-    "g":   "https://google.com/search?q={}",
-    "gh":  'https://github.com/search?o=desc&q={}&s=stars',
-    'w':   'https://en.wikipedia.org/wiki/{}',
-    'aw':   'https://wiki.archlinux.org/index.php/{}',
-    'ud':   'https://www.urbandictionary.com/define.php?term={}',
-    'y':   'https://www.youtube.com/results?search_query={}'
+    "!g":   "https://google.com/search?q={}",
+    "!gh":  'https://github.com/search?o=desc&q={}&s=stars',
+    '!w':   'https://en.wikipedia.org/wiki/{}',
+    '!aw':  'https://wiki.archlinux.org/index.php/{}',
+    '!ud':  'https://www.urbandictionary.com/define.php?term={}',
+    '!y':   'https://www.youtube.com/results?search_query={}'
 }
 
 #searchengines
@@ -126,280 +128,296 @@ c.editor.command = ["st", "-t", "edit_text", "-e", "nvim", "-f", "{}"]
 c.downloads.location.directory = "~/download"
 
 ###################################################
+c.content.autoplay = False
 ###################################################
 
+def filter_yt(info: interceptor.Request):
+    """Block the given request if necessary."""
+    url = info.request_url
+    if (
+        url.host() == "www.youtube.com"
+        and url.path() == "/get_video_info"
+        and "&adformat=" in url.query()
+    ):
+        info.block()
+
+
+interceptor.register(filter_yt)
+
+######################################################
 # set qutebrowser colors
+######################################################
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
-c.colors.completion.fg = base05
+c.colors.completion.fg = xresources["*.foreground"]
 
-# Background color of the completion widget for odd rows.
-c.colors.completion.odd.bg = base00
+# background color of the completion widget for odd rows.
+c.colors.completion.odd.bg = xresources["*.background"]
 
-# Background color of the completion widget for even rows.
-c.colors.completion.even.bg = base00
+# background color of the completion widget for even rows.
+c.colors.completion.even.bg = xresources["*.background"]
 
-# Foreground color of completion widget category headers.
-c.colors.completion.category.fg = base0A
+# foreground color of completion widget category headers.
+c.colors.completion.category.fg = xresources["*.color7"]
 
-# Background color of the completion widget category headers.
-c.colors.completion.category.bg = base00
+# background color of the completion widget category headers.
+c.colors.completion.category.bg = xresources["*.color12"]
 
 # Top border color of the completion widget category headers.
-c.colors.completion.category.border.top = base00
+c.colors.completion.category.border.top = xresources["*.background"]
 
 # Bottom border color of the completion widget category headers.
-c.colors.completion.category.border.bottom = base00
+c.colors.completion.category.border.bottom = xresources["*.background"]
 
-# Foreground color of the selected completion item.
-c.colors.completion.item.selected.fg = base01
+# foreground color of the selected completion item.
+c.colors.completion.item.selected.fg = xresources["*.background"]
 
-# Background color of the selected completion item.
-c.colors.completion.item.selected.bg = base0A
+# background color of the selected completion item.
+c.colors.completion.item.selected.bg = xresources["*.color2"]
 
 # Top border color of the selected completion item.
-c.colors.completion.item.selected.border.top = base0A
+c.colors.completion.item.selected.border.top = xresources["*.color12"]
 
 # Bottom border color of the selected completion item.
-c.colors.completion.item.selected.border.bottom = base0A
+c.colors.completion.item.selected.border.bottom = xresources["*.color12"]
 
-# Foreground color of the matched text in the selected completion item.
-c.colors.completion.item.selected.match.fg = base08
+# foreground color of the matched text in the selected completion item.
+c.colors.completion.item.selected.match.fg = xresources["*.color10"]
 
-# Foreground color of the matched text in the completion.
-c.colors.completion.match.fg = base0B
+# foreground color of the matched text in the completion.
+c.colors.completion.match.fg = xresources["*.color2"]
 
-# Background color of disabled items in the context menu.
-c.colors.contextmenu.disabled.bg = base01
+# background color of disabled items in the context menu.
+c.colors.contextmenu.disabled.bg = xresources["*.color8"]
 
-# Foreground color of disabled items in the context menu.
-c.colors.contextmenu.disabled.fg = base04
+# foreground color of disabled items in the context menu.
+c.colors.contextmenu.disabled.fg = xresources["*.foreground"]
 
 # Color of the scrollbar handle in the completion view.
-c.colors.completion.scrollbar.fg = basebl
+c.colors.completion.scrollbar.fg = xresources["*.background"]
 
 # Color of the scrollbar in the completion view.
-c.colors.completion.scrollbar.bg = base00
+c.colors.completion.scrollbar.bg = xresources["*.background"]
 
-# Background color of the context menu. If set to null, the Qt default is used.
-c.colors.contextmenu.menu.bg = base00
+# background color of the context menu. If set to null, the Qt default is used.
+c.colors.contextmenu.menu.bg = xresources["*.background"]
 
-# Foreground color of the context menu. If set to null, the Qt default is used.
-c.colors.contextmenu.menu.fg =  base05
+# foreground color of the context menu. If set to null, the Qt default is used.
+c.colors.contextmenu.menu.fg =  xresources["*.foreground"]
 
-# Background color of the context menu’s selected item. If set to null, the Qt default is used.
-c.colors.contextmenu.selected.bg = base0A
+# background color of the context menu’s selected item. If set to null, the Qt default is used.
+c.colors.contextmenu.selected.bg = xresources["*.color12"]
 
-#Foreground color: of the context menu’s selected item. If set to null, the Qt default is used.
-c.colors.contextmenu.selected.fg = base01
+#foreground color: of the context menu’s selected item. If set to null, the Qt default is used.
+c.colors.contextmenu.selected.fg = xresources["*.background"]
 
-# Background color for the download bar.
-c.colors.downloads.bar.bg = base00
+# background color for the download bar.
+c.colors.downloads.bar.bg = xresources["*.background"]
 
 # Color gradient start for download text.
-c.colors.downloads.start.fg = base00
+c.colors.downloads.start.fg = xresources["*.background"]
 
 # Color gradient start for download backgrounds.
-c.colors.downloads.start.bg = base0D
+c.colors.downloads.start.bg = xresources["*.color5"]
 
 # Color gradient end for download text.
-c.colors.downloads.stop.fg = base00
+c.colors.downloads.stop.fg = xresources["*.background"]
 
 # Color gradient stop for download backgrounds.
-c.colors.downloads.stop.bg = base0C
+c.colors.downloads.stop.bg = xresources["*.color2"]
 
-# Foreground color for downloads with errors.
-c.colors.downloads.error.fg = base08
+# foreground color for downloads with errors.
+c.colors.downloads.error.fg = xresources["*.color1"]
 
 # Font color for hints.
-c.colors.hints.fg = base00
+c.colors.hints.fg = xresources["*.foreground"]
 
-# Background color for hints. Note that you can use a `rgba(...)` value
+# background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
-c.colors.hints.bg = base0A
+c.colors.hints.bg = xresources["*.background"]
 
 # Font color for the matched part of hints.
-c.colors.hints.match.fg = base05
+c.colors.hints.match.fg = xresources["*.color2"]
 
 # Text color for the keyhint widget.
-c.colors.keyhint.fg = base05
+c.colors.keyhint.fg = xresources["*.foreground"]
 
 # Highlight color for keys to complete the current keychain.
-c.colors.keyhint.suffix.fg = base05
+c.colors.keyhint.suffix.fg = xresources["*.foreground"]
 
-# Background color of the keyhint widget.
-c.colors.keyhint.bg = base00
+# background color of the keyhint widget.
+c.colors.keyhint.bg = xresources["*.background"]
 
-# Foreground color of an error message.
-c.colors.messages.error.fg = base00
+# foreground color of an error message.
+c.colors.messages.error.fg = xresources["*.color0"]
 
-# Background color of an error message.
-c.colors.messages.error.bg = base08
+# background color of an error message.
+c.colors.messages.error.bg = xresources["*.color1"]
 
 # Border color of an error message.
-c.colors.messages.error.border = base08
+c.colors.messages.error.border = xresources["*.color0"]
 
-# Foreground color of a warning message.
-c.colors.messages.warning.fg = base00
+# foreground color of a warning message.
+c.colors.messages.warning.fg = xresources["*.background"]
 
-# Background color of a warning message.
-c.colors.messages.warning.bg = base0E
+# background color of a warning message.
+c.colors.messages.warning.bg = xresources["*.color1"]
 
 # Border color of a warning message.
-c.colors.messages.warning.border = base0E
+c.colors.messages.warning.border = xresources["*.color0"]
 
-# Foreground color of an info message.
-c.colors.messages.info.fg = base05
+# foreground color of an info message.
+c.colors.messages.info.fg = xresources["*.color2"]
 
-# Background color of an info message.
-c.colors.messages.info.bg = base00
+# background color of an info message.
+c.colors.messages.info.bg = xresources["*.background"]
 
 # Border color of an info message.
-c.colors.messages.info.border = base00
+c.colors.messages.info.border = xresources["*.background"]
 
-# Foreground color for prompts.
-c.colors.prompts.fg = base05
+# foreground color for prompts.
+c.colors.prompts.fg = xresources["*.foreground"]
 
 # Border used around UI elements in prompts.
-c.colors.prompts.border = basebl
+c.colors.prompts.border = xresources["*.background"]
 
-# Background color for prompts.
-c.colors.prompts.bg = basebl
+# background color for prompts.
+c.colors.prompts.bg = xresources["*.background"]
 
-# Background color for the selected item in filename prompts.
-c.colors.prompts.selected.bg = base0A
+# background color for the selected item in filename prompts.
+c.colors.prompts.selected.bg = xresources["*.color12"]
 
-# Foreground color of the statusbar.
-c.colors.statusbar.normal.fg = base0B
+# foreground color of the statusbar.
+c.colors.statusbar.normal.fg = xresources["*.foreground"]
 
-# Background color of the statusbar.
-c.colors.statusbar.normal.bg = base00
+# background color of the statusbar.
+c.colors.statusbar.normal.bg = xresources["*.background"]
 
-# Foreground color of the statusbar in insert mode.
-c.colors.statusbar.insert.fg = base00
+# foreground color of the statusbar in insert mode.
+c.colors.statusbar.insert.fg = xresources["*.background"]
 
-# Background color of the statusbar in insert mode.
-c.colors.statusbar.insert.bg = base0D
+# background color of the statusbar in insert mode.
+c.colors.statusbar.insert.bg = xresources["*.color4"]
 
-# Foreground color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.fg = base00
+# foreground color of the statusbar in passthrough mode.
+c.colors.statusbar.passthrough.fg = xresources["*.background"]
 
-# Background color of the statusbar in passthrough mode.
-c.colors.statusbar.passthrough.bg = base0C
+# background color of the statusbar in passthrough mode.
+c.colors.statusbar.passthrough.bg = xresources["*.color9"]
 
-# Foreground color of the statusbar in private browsing mode.
-c.colors.statusbar.private.fg = base00
+# foreground color of the statusbar in private browsing mode.
+c.colors.statusbar.private.fg = xresources["*.color0"]
 
-# Background color of the statusbar in private browsing mode.
-c.colors.statusbar.private.bg = base01
+# background color of the statusbar in private browsing mode.
+c.colors.statusbar.private.bg = xresources["*.color5"]
 
-# Foreground color of the statusbar in command mode.
-c.colors.statusbar.command.fg = base05
+# foreground color of the statusbar in command mode.
+c.colors.statusbar.command.fg = xresources["*.color2"]
 
-# Background color of the statusbar in command mode.
-c.colors.statusbar.command.bg = base00
+# background color of the statusbar in command mode.
+c.colors.statusbar.command.bg = xresources["*.background"]
 
-# Foreground color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.fg = base05
+# foreground color of the statusbar in private browsing + command mode.
+c.colors.statusbar.command.private.fg = xresources["*.color5"]
 
-# Background color of the statusbar in private browsing + command mode.
-c.colors.statusbar.command.private.bg = base00
+# background color of the statusbar in private browsing + command mode.
+c.colors.statusbar.command.private.bg = xresources["*.background"]
 
-# Foreground color of the statusbar in caret mode.
-c.colors.statusbar.caret.fg = base00
+# foreground color of the statusbar in caret mode.
+c.colors.statusbar.caret.fg = xresources["*.background"]
 
-# Background color of the statusbar in caret mode.
-c.colors.statusbar.caret.bg = base0E
+# background color of the statusbar in caret mode.
+c.colors.statusbar.caret.bg = xresources["*.color11"]
 
-# Foreground color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.fg = base00
+# foreground color of the statusbar in caret mode with a selection.
+c.colors.statusbar.caret.selection.fg = xresources["*.background"]
 
-# Background color of the statusbar in caret mode with a selection.
-c.colors.statusbar.caret.selection.bg = base0D
+# background color of the statusbar in caret mode with a selection.
+c.colors.statusbar.caret.selection.bg = xresources["*.color5"]
 
-# Background color of the progress bar.
-c.colors.statusbar.progress.bg = base0D
+# background color of the progress bar.
+c.colors.statusbar.progress.bg = xresources["*.color5"]
 
 # Default foreground color of the URL in the statusbar.
-c.colors.statusbar.url.fg = base05
+c.colors.statusbar.url.fg = xresources["*.foreground"]
 
-# Foreground color of the URL in the statusbar on error.
-c.colors.statusbar.url.error.fg = base08
+# foreground color of the URL in the statusbar on error.
+c.colors.statusbar.url.error.fg = xresources["*.color2"]
 
-# Foreground color of the URL in the statusbar for hovered links.
-c.colors.statusbar.url.hover.fg = base05
+# foreground color of the URL in the statusbar for hovered links.
+c.colors.statusbar.url.hover.fg = xresources["*.color11"]
 
-# Foreground color of the URL in the statusbar on successful load
+# foreground color of the URL in the statusbar on successful load
 # (http).
-c.colors.statusbar.url.success.http.fg = base0C
+c.colors.statusbar.url.success.http.fg = xresources["*.color13"]
 
-# Foreground color of the URL in the statusbar on successful load
+# foreground color of the URL in the statusbar on successful load
 # (https).
-c.colors.statusbar.url.success.https.fg = base0B
+c.colors.statusbar.url.success.https.fg = xresources["*.color13"]
 
-# Foreground color of the URL in the statusbar when there's a warning.
-c.colors.statusbar.url.warn.fg = base0E
+# foreground color of the URL in the statusbar when there's a warning.
+c.colors.statusbar.url.warn.fg = xresources["*.color1"]
 
-# Background color of the tab bar.
-c.colors.tabs.bar.bg = basebl
+# background color of the tab bar.
+c.colors.tabs.bar.bg = xresources["*.background"]
 
 # Color gradient start for the tab indicator.
-c.colors.tabs.indicator.start = base0D
+c.colors.tabs.indicator.start = xresources["*.color5"]
 
 # Color gradient end for the tab indicator.
-c.colors.tabs.indicator.stop = base0C
+c.colors.tabs.indicator.stop = xresources["*.color11"]
 
 # Color for the tab indicator on errors.
-c.colors.tabs.indicator.error = base08
+c.colors.tabs.indicator.error = xresources["*.color1"]
 
-# Foreground color of unselected odd tabs.
-c.colors.tabs.odd.fg = base05
+# foreground color of unselected odd tabs.
+c.colors.tabs.odd.fg = xresources["*.foreground"]
 
-# Background color of unselected odd tabs.
-c.colors.tabs.odd.bg = basebl
+# background color of unselected odd tabs.
+c.colors.tabs.odd.bg = xresources["*.color0"]
 
-# Foreground color of unselected even tabs.
-c.colors.tabs.even.fg = base05
+# foreground color of unselected even tabs.
+c.colors.tabs.even.fg = xresources["*.foreground"]
 
-# Background color of unselected even tabs.
-c.colors.tabs.even.bg = basebl
+# background color of unselected even tabs.
+c.colors.tabs.even.bg = xresources["*.color8"]
 
-# Background color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.bg = base0C
+# background color of pinned unselected even tabs.
+c.colors.tabs.pinned.even.bg = xresources["*.color11"]
 
-# Foreground color of pinned unselected even tabs.
-c.colors.tabs.pinned.even.fg = base07
+# foreground color of pinned unselected even tabs.
+c.colors.tabs.pinned.even.fg = xresources["*.background"]
 
-# Background color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.bg = base0B
+# background color of pinned unselected odd tabs.
+c.colors.tabs.pinned.odd.bg = xresources["*.color10"]
 
-# Foreground color of pinned unselected odd tabs.
-c.colors.tabs.pinned.odd.fg = base07
+# foreground color of pinned unselected odd tabs.
+c.colors.tabs.pinned.odd.fg = xresources["*.foreground"]
 
-# Background color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.bg = base05
+# background color of pinned selected even tabs.
+c.colors.tabs.pinned.selected.even.bg = xresources["*.color2"]
 
-# Foreground color of pinned selected even tabs.
-c.colors.tabs.pinned.selected.even.fg = base00
+# foreground color of pinned selected even tabs.
+c.colors.tabs.pinned.selected.even.fg = xresources["*.background"]
 
-# Background color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.bg = base05
+# background color of pinned selected odd tabs.
+c.colors.tabs.pinned.selected.odd.bg = xresources["*.color2"]
 
-# Foreground color of pinned selected odd tabs.
-c.colors.tabs.pinned.selected.odd.fg = base0E
+# foreground color of pinned selected odd tabs.
+c.colors.tabs.pinned.selected.odd.fg = xresources["*.color12"]
 
-# Foreground color of selected odd tabs.
-c.colors.tabs.selected.odd.fg = base00
+# foreground color of selected odd tabs.
+c.colors.tabs.selected.odd.fg = xresources["*.foreground"]
 
-# Background color of selected odd tabs.
-c.colors.tabs.selected.odd.bg = base05
+# background color of selected odd tabs.
+c.colors.tabs.selected.odd.bg = xresources["*.color12"]
 
-# Foreground color of selected even tabs.
-c.colors.tabs.selected.even.fg = base00
+# foreground color of selected even tabs.
+c.colors.tabs.selected.even.fg = xresources["*.foreground"]
 
-# Background color of selected even tabs.
-c.colors.tabs.selected.even.bg = base05
+# background color of selected even tabs.
+c.colors.tabs.selected.even.bg = xresources["*.color12"]
 
-# Background color for webpages if unset (or empty to use the theme's color).
-c.colors.webpage.bg = base00
+# background color for webpages if unset (or empty to use the theme's color).
+c.colors.webpage.bg = xresources["*.background"]

@@ -8,7 +8,7 @@
 
 static char *font2[] = {
 	"JoyPixels:pixelsize=17:antialias=true:autohint=true",
-	"Hack Nerd Font Mono:pixelsize=17:antialias=true:autohint=true",
+	"Hack:pixelsize=17:antialias=true:autohint=true",
 };
 
 static char *font = "JetBrains mono:pixelsize=17:antialias=true:autohint=true";
@@ -94,7 +94,7 @@ const int boxdraw_braille = 1;
 static int bellvolume = 0;
 
 /* default TERM value */
-char *termname = "st-256color";
+char *termname = "st";
 
 /*
  * spaces per tab
@@ -114,7 +114,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = .8;
+float alpha = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -235,6 +235,7 @@ static MouseShortcut mshortcuts[] = {
 /* Internal keyboard shortcuts. */
 #define MODKEY Mod1Mask
 #define TERMMOD Mod4Mask
+#define CTRL ControlMask
 
 MouseKey mkeys[] = {
 	/* button               mask            function        argument */
@@ -267,20 +268,20 @@ static Shortcut shortcuts[] = {
 	{ XK_ANY_MOD,	    	Button2,    	selpaste,   	{.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} },
-	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
-	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
+	/* { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} }, */
+	/* { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} }, */
+	/* { MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} }, */
+	/* { MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} }, */
+	{ CTRL,									XK_k,           kscrollup,      {.i =  1} },
+	{ CTRL,		              XK_j,           kscrolldown,    {.i =  1} },
 	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
 	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
-	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
-	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
+	/* { MODKEY,               XK_u,           kscrollup,      {.i = -1} }, */
+	/* { MODKEY,               XK_d,           kscrolldown,    {.i = -1} }, */
 	/* { MODKEY,	        	XK_s,		    changealpha, 	{.f = -0.05} }, */
 	/* { MODKEY,       		XK_a,	    	changealpha,	{.f = +0.05} }, */
-	{ MODKEY|ShiftMask,     XK_Up,          zoom,           {.f = +1} },
-	{ MODKEY|ShiftMask,     XK_Down,        zoom,           {.f = -1} },
+	{ MODKEY|ShiftMask,     XK_Page_Up,          zoom,           {.f = +1} },
+	{ MODKEY|ShiftMask,     XK_Page_Down,        zoom,           {.f = -1} },
 	{ MODKEY|ShiftMask,     XK_K,           zoom,           {.f = +1} },
 	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
 	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },

@@ -1,14 +1,23 @@
 #!/bin/sh
 # ~/.xinitrc
 
-# set defaults
+# unset DISPLAY
 export EDITOR="nvim"
+export READER="zathura"
+# export VISUAL="nvim"
 export TERM="st"
 export BROWSER="qutebrowser"
+# export COLORTERM="truecolor"
+# export PAGER="less"
+export WM="dwm"
 export VIEW="sxiv"
 
+
+# clear tmp
+# doas rm -rf /tmp/*
+
 # set backlight
-doas xbacklight -set 25
+doas xbacklight -inc .04
 
 # set trackpoint to full speed
 xinput set-prop "TPPS/2 IBM TrackPoint" "332" 1.0
@@ -24,22 +33,24 @@ xinput --disable "TPPS/2 IBM TrackPoint"
 xinput --disable "Synaptics TM3276-022"
 
 # set wallpaper
-# xwallpaper --zoom .config/wall.png &
+# xwallpaper --zoom	~/.local/share/bg
+xwallpaper --zoom	~/.config/black.png
 
 # color
-xrdb .config/Xresources &
+xrdb .config/Xresources
 
 # xcompmgr &
-unclutter --timeout "1" --ignore-scrolling &
-dunst &
-bar &
+# unclutter -idle 0 &
+# picom --experimental-backends &
+hhpc &
+# dunst &
 # compton &
+dwmblocks &
 sxhkd &
-doas powertop --auto-tune &
+# shotkey &
 
-
-# start dwm 
+# start $WM 
 while true; do 
-	dwm >/dev/null 2>&1
+		$WM >/dev/null 2>&1
 done
-exec dwm
+exec $WM

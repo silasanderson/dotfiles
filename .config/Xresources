@@ -1,12 +1,12 @@
 ! special
 /* sxiv.foreground:#444444 */
-Xcursor.size: 16
-*.foreground:   #FFFFFF
+*.fontsize:   12
+*.foreground:   #ffffff
 *.background:   #000000
 
 ! black
 *.color0:       #000000
-*.color8:       #444444
+*.color8:       #212121
 
 ! red
 *.color1:       #DE1A0B
@@ -14,7 +14,7 @@ Xcursor.size: 16
 
 ! green
 *.color2:       #39FF14
-*.color10:      #75d146
+*.color10:      #5AF78E
 
 ! yellow
 *.color3:       #ffd500
@@ -22,7 +22,7 @@ Xcursor.size: 16
 
 ! blue
 *.color4:       #268bd2
-*.color12:      #23AAB6
+*.color12:      #005577
 
 ! magenta
 *.color5:       #d100d1
@@ -34,7 +34,7 @@ Xcursor.size: 16
 
 ! white
 *.color7:       #ffffff
-*.color15:      #eae0be
+*.color15:      #aaaaaa
 
 dwm.normbgcolor:      #000000
 dwm.normbordercolor:  #444444

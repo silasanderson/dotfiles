@@ -1,10 +1,16 @@
 #!/bin/sh
 # ~/.xinitrc
 
-# set defaults
+# unset DISPLAY
 export EDITOR="nvim"
+export READER="zathura"
+# export VISUAL="nvim"
 export TERM="st"
 export BROWSER="qutebrowser"
+# export COLORTERM="truecolor"
+# export PAGER="less"
+export WM="dwm"
+export VIEW="sxiv"
 
 # set backlight
 doas xbacklight -set 25
@@ -13,31 +19,34 @@ doas xbacklight -set 25
 xinput set-prop "TPPS/2 IBM TrackPoint" "332" 1.0
 
 # set key repeat rate. delay 300 milisecond, 80 per sec
-xset r rate 300 100
+xset r rate 200 30
 
 # set  
 setxkbmap colemak_wide
 
 # run "togele track pad" script
-ttp
+xinput --disable "TPPS/2 IBM TrackPoint"
+xinput --disable "Synaptics TM3276-022"
 
 # set wallpaper
-xwallpaper --zoom .config/wall.png &
+xwallpaper --zoom	~/.local/share/bg
+# xwallpaper --zoom	~/.config/black.png
 
 # color
-xrdb .config/Xresources &
+xrdb .config/Xresources
 
-#xcompmgr &
-unclutter --timeout "1" --ignore-scrolling &
-dunst &
-bar &
-compton &
+# xcompmgr &
+# unclutter -idle 0 &
+picom --experimental-backends &
+hhpc &
+# dunst &
+# compton &
+dwmblocks &
 sxhkd &
-# doas powertop --auto-tune &
+# shotkey &
 
-
-# start dwm 
+start dwm 
 while true; do 
-	dwm >/dev/null 2>&1
+		dwm >/dev/null 2>&1
 done
-exec dwm
+exec $WM
