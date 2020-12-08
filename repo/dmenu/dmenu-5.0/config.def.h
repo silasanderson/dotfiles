@@ -9,8 +9,10 @@ static const char *fonts[] = { "JetBrains Mono Medium:pixelsize=14:antialias=tru
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*     fg         bg       */
-	[SchemeNorm] = { "#bbbbbb", "#000000" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
+	[SchemeNorm] = { "#FFFFFF", "#000000" },
+	[SchemeSel] = { "#FFFFFF", "#005577" },
+	[SchemeSelHighlight] = { "#ffd500", "#005577" },
+	[SchemeNormHighlight] = { "#ffd500", "#000000" },
 	[SchemeOut] = { "#000000", "#00ffff" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
