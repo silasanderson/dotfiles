@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $@ = *y* ]]; then curl 'https://corona-stats.online/states/us?minimal=true' -o ~/.cache/corona && clear ;fi
+if [[ $1 = *y* ]]; then  curl -L "covid19cli.now.sh" -o ~/.cache/corona.tmp && sed -n "1,8p;15p" ~/.cache/corona.tmp > ~/.cache/corona && rm -r ~/.cache/corona.tmp ;fi
 
 case $1 in
 		 '')

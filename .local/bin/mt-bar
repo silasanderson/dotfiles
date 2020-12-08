@@ -1,4 +1,4 @@
 while true; do
-	xsetroot -name "$(mt)"
-	sleep 5
+	xsetroot -name "$(mt -hm)"
+	sleep 1
 done

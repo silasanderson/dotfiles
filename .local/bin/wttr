@@ -3,30 +3,31 @@
 case $1 in
 		*v)
 		  clear
-			curl 'v2d.wttr.in/Ashfield,Ma?Qm'
-				;;
-		 *q)
-		  clear
-			curl 'wttr.in/Ashfield,Ma?mQ'
+			cat ~/.cache/wether/visual
 				;;
 		  "")
-			curl 'wttr.in/Ashfield,Ma?mQ0'
+			cat ~/.cache/wether/single
 				;;
 			*h)
 		  clear
-			curl 'wttr.in/:help'
+			cat ~/.cache/wether/help
 			;;
 		  *lf)
 		  clear
-			curl 'wttr.in/Ashfield,Ma?m'
+			cat ~/.cache/wether/long-full
 			;;
 			*l)
 		  clear
-			curl 'wttr.in/Ashfield,Ma?nm'
+			cat	~/.cache/wether/long
+			;;
+			*mpv)
+				mpv --loop-file=inf ~/.cache/wether/radar.gif
 			;;
 			*r)
-		  clear
-			chafa --clear -w 9 -c full --symbols braille --fill braille https://radar.weather.gov/lite/N0R/BOX_loop.gif
+				chafa --clear -w 9 -c full --symbols braille --fill braille ~/.cache/wether/radar.gif
+			;;
+			*sxhkd)
+				st -f "Mono:pixelsize=6" -e chafa --clear -w 9 -c full --symbols braille --fill braille ~/.cache/wether/radar.gif
 			;;
 		  *)
 			echo wttr: Unknown option argument: "$@"
