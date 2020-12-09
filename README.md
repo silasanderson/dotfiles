@@ -2,7 +2,7 @@
 my configuashon files and other stuff
 
 |                |              |
-| :------------- | -----------: |
+| :------------ | :----------: |
 | os | arch |
 | browser | qutebrowser |
 | sh | zsh |
