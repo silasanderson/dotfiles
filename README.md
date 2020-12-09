@@ -1,10 +1,11 @@
 # dotfiles
 my configuashon files and other stuff
-* wm dwm
-* os arch
-* term st
-* file lf
-* edit nvim
+* dwm
+* artix
+* st
+* lf
+* nvim
+* qutebrowser
 
 ## screen shots
 ![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot.png)
