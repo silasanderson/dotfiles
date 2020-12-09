@@ -8,7 +8,7 @@ my configuashon files and other stuff
 
 ## screen shots
 ![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot.png)
-![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot2.png)
+![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot3.png)
 
 ## startpage
 ![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/startpage.png)
