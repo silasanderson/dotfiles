@@ -1,11 +1,16 @@
 # dotfiles
 my configuashon files and other stuff
-* dwm
-* artix
-* st
-* lf
-* nvim
-* qutebrowser
+
+|                |              |
+| :------------- | -----------: |
+| os | arch |
+| browser | qutebrowser |
+| sh | zsh |
+| wm | dwm |
+| bar| dwmblocks |
+| term | st |
+| file | lf |
+| edit | nvim |
 
 ## screen shots
 ![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/screenshot.png)
