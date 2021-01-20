@@ -18,3 +18,6 @@ my configuashon files and other stuff
 
 ## startpage
 ![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/startpage.png)
+
+## tty
+![screenshot](https://raw.githubusercontent.com/silasanderson/dotfiles/master/download/tty.png)
