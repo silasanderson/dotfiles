@@ -347,9 +347,9 @@ keymap  j       MOVE_DOWN1
 keymap  k       MOVE_UP1
 keymap  UP      MOVE_UP1
 ############################ Scroll the screen down one line (DOWN)
-keymap  C-e     DOWN
+keymap  C-y     DOWN
 ############################ Scroll the screen up one line (UP)
-keymap  C-y     UP
+keymap  C-e     UP
 ############################ Shift screen left (SHIFT_LEFT)
 #   24:<NOT        Shift screen left (SHIFT_LEFT)
 #   25:ASSIGNED>
