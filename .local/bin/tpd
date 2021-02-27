@@ -7,7 +7,7 @@ case $id in
 				device="TPPS/2 IBM TrackPoint"
 				;;
 		track)
-				device="Synaptics TM3276-022"
+				device="Virtual core XTEST pointer"
 				;;
 		both)
 				device1="TPPS/2 IBM TrackPoint"
