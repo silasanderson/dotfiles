@@ -1,10 +1,6 @@
 alias vimwiki="$EDITOR ~/vimwiki/index.wiki"
 
-alias mutt="neomutt"
-
 alias wall-black="xwallpaper --center download/black.png"
-
-alias vim="nvim"
 
 alias P="doas pacman"
 
@@ -14,7 +10,9 @@ alias colemakwide="setxkbmap colemak_wide_alt"
 
 alias colemak="setxkbmap colemak_wide"
 
-alias ek="nvim /usr/share/X11/xkb/symbols/colemak_wide"
+alias et="$EDITOR ~/.tmux.conf"
+
+alias ek="$EDITOR /usr/share/X11/xkb/symbols/colemak_wide"
 
 alias ep="$EDITOR /etc/profile"
 
@@ -45,6 +43,7 @@ alias sv="doas sv"
 alias Syu="doas pacman -Syu"
 alias Syy="doas pacman -Syy"
 alias S="doas pacman -S"
+alias Ss="doas pacman -Ss"
 alias Rns="doas pacman -Rns"
 alias R="doas pacman -R"
 alias Qeq="doas pacman -Qeq"
@@ -61,7 +60,6 @@ alias bs='br --sizes'
 
 alias ls="ls --color=always"
 alias ip="ip --c=always"
-alias lt="tree -CA"
 alias tree="tree -CA"
 alias grep="grep --color=always"
 

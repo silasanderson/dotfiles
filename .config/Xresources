@@ -1,12 +1,13 @@
 ! special
-/* sxiv.foreground:#444444 */
 *.fontsize:   12
 *.foreground:   #ffffff
 *.background:   #000000
+Sxiv.foreground:#333333
+! Sxiv.background:#000000
 
 ! black
 *.color0:       #000000
-*.color8:       #212121
+*.color8:       #222222
 
 ! red
 *.color1:       #DE1A0B
@@ -29,12 +30,12 @@
 *.color13:      #c583d0
 
 ! cyan
-*.color6:       #32d0fc
+*.color6:       #00FFFF
 *.color14:      #8adaf1
 
 ! white
 *.color7:       #ffffff
-*.color15:      #aaaaaa
+*.color15:      #333333
 
 dwm.normbgcolor:      #000000
 dwm.normbordercolor:  #444444

@@ -9,14 +9,18 @@ export TERM="st"
 export BROWSER="qutebrowser"
 # export COLORTERM="truecolor"
 # export PAGER="less"
-export WM="dwm"
+# export WM="dwm"
 export VIEW="sxiv"
 
+
+# clear tmp
+# doas rm -rf /tmp/*
+
 # set backlight
-doas xbacklight -set 25
+# xbacklight -inc .04
 
 # set trackpoint to full speed
-xinput set-prop "TPPS/2 IBM TrackPoint" "332" 1.0
+xinput set-prop "TPPS/2 IBM TrackPoint" "332" .3
 
 # set key repeat rate. delay 300 milisecond, 80 per sec
 xset r rate 200 30
@@ -29,7 +33,7 @@ xinput --disable "TPPS/2 IBM TrackPoint"
 xinput --disable "Synaptics TM3276-022"
 
 # set wallpaper
-xwallpaper --zoom	~/.local/share/bg
+# xwallpaper --zoom	~/.local/share/bg
 # xwallpaper --zoom	~/.config/black.png
 
 # color
@@ -37,16 +41,18 @@ xrdb .config/Xresources
 
 # xcompmgr &
 # unclutter -idle 0 &
-picom --experimental-backends &
-hhpc &
+# picom --experimental-backends &
 # dunst &
 # compton &
-dwmblocks &
-sxhkd &
 # shotkey &
+sxhkd &
+if [ $WM = dwm ]; then
+	dwmblocks &
+	hhpc &
+fi
 
-start dwm 
+# start $WM 
 while true; do 
-		dwm >/dev/null 2>&1
+	$WM >/dev/null 2>&1
 done
 exec $WM
