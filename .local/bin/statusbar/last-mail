@@ -1,0 +1,5 @@
+#!/bin/sh
+lastUpdate="$(stat -c %Y .cache/mail)"
+now="$(date +%s)"
+let diff="${now}-${lastUpdate}"
+echo $diff

@@ -1,2 +1,3 @@
 #!/bin/sh
-pamixer --get-volume-human
+# pamixer --get-volume-human
+awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master)
