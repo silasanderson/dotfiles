@@ -8,7 +8,7 @@ export READER="zathura"
 export TERM="st"
 export BROWSER="qutebrowser"
 # export COLORTERM="truecolor"
-# export PAGER="less"
+export PAGER="less"
 export WM="dwm"
 export VIEW="sxiv"
 
@@ -17,10 +17,10 @@ export VIEW="sxiv"
 # doas rm -rf /tmp/*
 
 # set backlight
-doas xbacklight -inc .04
+# xbacklight -inc .04
 
 # set trackpoint to full speed
-xinput set-prop "TPPS/2 IBM TrackPoint" "332" 1.0
+xinput set-prop "TPPS/2 IBM TrackPoint" "332" .3
 
 # set key repeat rate. delay 300 milisecond, 80 per sec
 xset r rate 200 30
@@ -34,7 +34,7 @@ xinput --disable "Synaptics TM3276-022"
 
 # set wallpaper
 # xwallpaper --zoom	~/.local/share/bg
-xwallpaper --zoom	~/.config/black.png
+# xwallpaper --zoom	~/.config/black.png
 
 # color
 xrdb .config/Xresources
@@ -42,15 +42,18 @@ xrdb .config/Xresources
 # xcompmgr &
 # unclutter -idle 0 &
 # picom --experimental-backends &
-hhpc &
 # dunst &
 # compton &
-dwmblocks &
-sxhkd &
 # shotkey &
+mpd &
+sxhkd &
+if [ $WM = dwm ]; then
+	dwmblocks &
+	hhpc &
+fi
 
 # start $WM 
 while true; do 
-		$WM >/dev/null 2>&1
+	$WM >/dev/null 2>&1
 done
 exec $WM

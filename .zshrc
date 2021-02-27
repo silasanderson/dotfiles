@@ -10,6 +10,7 @@ for color (${(k)fg})
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 unsetopt BEEP
+set bell-style none
 # unset DISPLAY
 
 # History in cache directory:
@@ -17,16 +18,25 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 source ~/.local/share/zsh/plugin/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.local/share/zsh/plugin/fzf-tab/fzf-tab.zsh
+# source ~/.local/share/zsh/plugin/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.local/share/zsh/plugin/zsh-system-clipboard/zsh-system-clipboard.zsh
+# source ~/.local/share/zsh/plugin/zsh-vi-mode/zsh-vi-mode.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# zstyle ':autocomplete:*' min-input 3
+# zstyle ':completion:*' extra-verbose yes
+# zstyle ':autocomplete:*' config off
+
+
 
 
 # Enable searching through history
-# bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
 
 # Load aliases and shortcuts if existent.
-# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
-# [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
 # Basic auto/tab complete:
 autoload -U compinit
@@ -52,7 +62,7 @@ bindkey -M menuselect 'l' vi-forward-char
 # bindkey -M menuselect 'up' vi-up-line-or-history
 # bindkey -M menuselect 'right' vi-forward-char
 
-# bindkey -v '^?' backward-delete-char
+bindkey -v '^?' backward-delete-char
 bindkey -v
 export KEYTIMEOUT=1
 
@@ -81,23 +91,11 @@ precmd_functions+=(_set_beam_cursor) #
 # ensure insert mode and beam cursor when exiting vim
 zle-line-init() { zle -K viins; _set_beam_cursor }
 
-# # Use lf to switch directories and bind it to ctrl-o
-# lfcd () {
-#     tmp="$(mktemp)"
-#     lf -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         rm -f "$tmp" >/dev/null
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
-# bindkey -s '^o' 'lfcd\n'
-
-bindkey '^ ' 'autosuggest-accept'
+# bindkey '^ ' 'autosuggest-accept'
 
 # bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
-bindkey '^[[P' delete-char
+# bindkey '^[[P' delete-char
 
 # # Edit line in vim buffer ctrl-v
 autoload edit-command-line; zle -N edit-command-line
@@ -107,6 +105,6 @@ autoload -U edit-command-line && zle -N edit-command-line && bindkey -M vicmd "^
 
 
 PROMPT='%F{cyan}%3~%f %F{green}% |> %F{white}'
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yello"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=yello,underline"
 
 source ~/.local/share/zsh/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
