@@ -8,7 +8,7 @@
 
 static char *font2[] = {
 	"JoyPixels:pixelsize=17:antialias=true:autohint=true",
-	"Hack:pixelsize=17:antialias=true:autohint=true",
+	"Nerd mono:pixelsize=17:antialias=true:autohint=true",
 };
 
 static char *font = "JetBrains mono:pixelsize=17:antialias=true:autohint=true";
@@ -244,13 +244,8 @@ MouseKey mkeys[] = {
 	{ Button4,              TERMMOD,        zoom,           {.f =  +1} },
 	{ Button5,              TERMMOD,        zoom,           {.f =  -1} },
 };
-
-static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
-
-static char *copyurlcmd[] = { "/bin/sh", "-c",
-    "tmp=$(sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https|gopher|gemini|ftp|ftps|git)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./@$&%?$#=_-~]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' ); IFS=; [ ! -z $tmp ] && echo $tmp | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard",
-    "externalpipe", NULL };
-
+static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -o", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "st-urlhandler -c", "externalpipe", NULL };
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
 
 static Shortcut shortcuts[] = {
@@ -262,9 +257,10 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
 	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
 	{ MODKEY,               XK_Home,        zoomreset,      {.f =  0} },
-	{ TERMMOD,              XK_c,           clipcopy,       {.i =  0} },
-	{ ShiftMask,            XK_Insert,      clippaste,      {.i =  0} },
-	{ TERMMOD,              XK_v,           clippaste,      {.i =  0} },
+	{ CTRL|ShiftMask,       XK_C,           clipcopy,       {.i =  0} },
+	{ CTRL|ShiftMask,       XK_V,           clippaste,      {.i =  0} },
+	/* { MODKEY,				XK_y,           clipcopy,       {.i =  0} }, */
+	/* { MODKEY,				XK_p,           clippaste,      {.i =  0} }, */
 	{ XK_ANY_MOD,	    	Button2,    	selpaste,   	{.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
@@ -272,23 +268,23 @@ static Shortcut shortcuts[] = {
 	/* { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} }, */
 	/* { MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} }, */
 	/* { MODKEY,               XK_Page_Down,   kscrolldown,    {.i = -1} }, */
-	{ CTRL,									XK_k,           kscrollup,      {.i =  1} },
-	{ CTRL,		              XK_j,           kscrolldown,    {.i =  1} },
+	{ CTRL,					XK_k,           kscrollup,      {.i =  1} },
+	{ CTRL,			        XK_j,           kscrolldown,    {.i =  1} },
 	{ MODKEY,               XK_Up,          kscrollup,      {.i =  1} },
 	{ MODKEY,               XK_Down,        kscrolldown,    {.i =  1} },
-	/* { MODKEY,               XK_u,           kscrollup,      {.i = -1} }, */
-	/* { MODKEY,               XK_d,           kscrolldown,    {.i = -1} }, */
+	/* { MODKEY,				XK_u,           kscrollup,      {.i = -1} }, */
+	/* { MODKEY,				XK_d,           kscrolldown,    {.i = -1} }, */
 	/* { MODKEY,	        	XK_s,		    changealpha, 	{.f = -0.05} }, */
-	/* { MODKEY,       		XK_a,	    	changealpha,	{.f = +0.05} }, */
-	{ MODKEY|ShiftMask,     XK_Page_Up,          zoom,           {.f = +1} },
-	{ MODKEY|ShiftMask,     XK_Page_Down,        zoom,           {.f = -1} },
+	/* { MODKEY,				XK_a,	    	changealpha,	{.f = +0.05} }, */
+	/* { MODKEY|ShiftMask,     XK_Page_Up,          zoom,           {.f = +1} }, */
+	/* { MODKEY|ShiftMask,     XK_Page_Down,        zoom,           {.f = -1} }, */
 	{ MODKEY|ShiftMask,     XK_K,           zoom,           {.f = +1} },
 	{ MODKEY|ShiftMask,     XK_J,           zoom,           {.f = -1} },
 	{ TERMMOD,              XK_U,           zoom,           {.f = +2} },
 	{ TERMMOD,              XK_D,           zoom,           {.f = -2} },
-	{ MODKEY|ShiftMask,     XK_l,           externalpipe,   {.v = openurlcmd } },
-	{ MODKEY|ShiftMask,     XK_y,           externalpipe,   {.v = copyurlcmd } },
-	{ MODKEY|ShiftMask,     XK_o,           externalpipe,   {.v = copyoutput } },
+	{ MODKEY,				XK_o,           externalpipe,   {.v = openurlcmd } },
+	{ MODKEY,			    XK_y,           externalpipe,   {.v = copyurlcmd } },
+	{ MODKEY,				XK_c,           externalpipe,   {.v = copyoutput } },
 };
 
 /*

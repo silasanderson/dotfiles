@@ -1,3 +1,5 @@
+set ratios 1:2:3
+set cleaner ~/.config/lf/cleaner
 # Basic Settings
 set hidden
 # set drawbox
@@ -11,27 +13,37 @@ set previewer pistol
 set ignorecase true
 set relativenumber
 set dircounts
+
 # set sortby name
 
 # Custom Functions
 
-cmd q quit
-cmd wq quit
+# cmd kill $killall lf
+# map Q kill
+# map Q &lf -remote 'send quit'; lf -remote 'quit'
+
+# cmd wq quit
 
 cmd browser $($BROWSER $f)
 
-cmd sxiv sxiv $fx
-
-cmd sxiv $f | xclip -o
+# cmd sxiv $f | xclip -o
 
 cmd open ${{
     case $(file --mime-type $f -b) in
-    text/*) $EDITOR $fx;;
-	image/*) $VIEW $fx;; 
-	audio/*) mpv $f ;;
-	video/*) mpv $fx ;;
+	# text/html) $BROWSER $fx;;
+	image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	text/csv) sc-im $f;;
+	text/*) $EDITOR $f;;
+	image/gif) mpv --loop-file=inf $fx ;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	# image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
+	image/*) sxiv $fx ;;
+	audio/*) mpv --audio-display=no $f ;;
+	# video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+	video/*) mpv $f -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
 	application/vnd.openxmlformats-officedocument.wordprocessingml.document) docx2txt $fx - | nvim ;;
-	application/pdf|application/vnd*|application/epub*) $READER $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
@@ -117,12 +129,15 @@ cmd dlfile %dlfile
  cmd unarchive ${{
     set -f
     case $f in
+        *.tar) tar -xf $f;;
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
         *.tar.gz|*.tgz) tar xzvf $f;;
         *.tar.xz|*.txz) tar xJvf $f;;
         *.zip) unzip $f;;
         *.rar) unrar x $f;;
         *.7z) 7z x $f;;
+        *.bz2) bzip2 --decompress $f;;
+        *.zst) zstd -d $f;;
     esac
 }}
 
@@ -136,6 +151,8 @@ cmd dlfile %dlfile
  #      *) echo "Unsupported format" ;;
  #  esac
 # }}
+
+# cmd restor chmod 644
 
 cmd zip %zip -r "$f" "$f"
 cmd tar %tar cvf "$f.tar" "$f"
@@ -182,6 +199,7 @@ map c
 map e
 map f
 map y
+map = restor
 
 # Not really image preview
 map - $~/.config/lf/draw_img "$f"
@@ -211,15 +229,15 @@ map tc clear_trash
 map tr restore_trash
 
 # Broot Mapping
-map f broot_jump
+# map f broot_jump
 
 # Dragon Mapping
-map dr dragon
-map ds dragon-stay
-map di dragon-individual
-map dm mvdragon
-map dc cpdragon
-map dl dlfile
+# map dr dragon
+# map ds dragon-stay
+# map di dragon-individual
+# map dm mvdragon
+# map dc cpdragon
+# map dl dlfile
 
 # map ss stripspace
 
@@ -230,7 +248,8 @@ map p paste
 map x cut
 map yy copy
 map yl yank-lines
-map <enter> open
+# map <enter> open
+map <enter> shell
 map mf mkfile
 map mr sudomkfile
 map md mkdir
@@ -249,16 +268,24 @@ map U unselect
 
 # Movement
 map gtr cd ~/.local/share/Trash/files
+map gvw cd ~/.local/share/nvim/vimwiki
 map gt. cd ~/tmp/
 
-map gw cd /mda/image/wallpaper
-map gi cd /mda/image
+map gw cd ~/mda/image/wallpaper
+map gi cd ~/mda/image
+map gmu cd ~/mda/audio/music/
+map gmo cd ~/mda/video/movie/
+map gtv cd ~/mda/video/tv/
+map gpo cd ~/mda/audio/podcast/
+map gv. cd ~/mda/video/
+map gm. cd ~/mda
+map gtor cd ~/mda/backup/tor
 
 map glb cd ~/.local/bin/
 map gd cd ~/download
 
 map gs cd ~/script
-map gm cd /mda
+map gM cd /mnt
 
 map gr. cd ~/repo
 map grm cd ~/repo/dmenu

@@ -1,113 +1,153 @@
-Insert
+alt + X
+  killandnotify "sxhkd" "Config reloaded" && sxhkd &
+
+BackSpace + super
+	sysact
+
+alt + grave
+	dmenuunicode
+
+super + Home
 		dmenu-scrot
+
+F9
+	dmenumount
+
+F10
+	dmenuumount
 
 XF86Tools
 		tpd
 
-super + XF86Tools
-	toggleprogram hhpc
+# super + XF86Tools
+#	toggleprogram unclutter
 
 XF86Favorites
-    setbg /mda/image/wallpaper/
+    setbg ~/mda/image/wallpaper/
 
 XF86Favorites + super
     setbg .config/black.png
 
-#F12
-#		beep -f 5000 -l 50 -r 2
+XF86MonBrightnessDown + super
+    xbacklight -set 0 && pkill -RTMIN+9 dwmblocks
+
+XF86MonBrightnessDown + alt 
+    xbacklight -set 0.04 && pkill -RTMIN+9 dwmblocks
 
 XF86MonBrightnessDown
-    doas xbacklight -dec 5 && pkill -RTMIN+9 dwmblocks
+    xbacklight -dec 5 && pkill -RTMIN+9 dwmblocks
+
+XF86MonBrightnessUp + super
+    xbacklight -set 100 && pkill -RTMIN+9 dwmblocks
 
 XF86MonBrightnessUp
-    doas xbacklight -inc 5 && pkill -RTMIN+9 dwmblocks
+    xbacklight -inc 5 && pkill -RTMIN+9 dwmblocks
 
 XF86Display
 		displayselect
 
-# XF86WLAN
-#		if [ $(cat /sys/class/net/w*/operstate 2>/dev/null) = up ]; then doas rfkill block all && notify-send -t 4000 "network disabled"; else doas rfkill unblock all && notify-send -t 4000 "network enabled"; fi
+XF86WLAN
+	toggle-wifi-notify && pkill -RTMIN+4 dwmblocks
 
-super + A
+super + XF86WLAN
+	toggle-network && pkill -RTMIN+4 dwmblocks
+
+# alt + XF86WLAN
+# toggle-ssh
+
+F8
+	toggle-ssh && pkill -RTMIN+13 dwmblocks
+
+F8 + super
+	toggle-vpn && pkill -RTMIN+4 dwmblocks
+
+XF86Bluetooth
+	notify-send -t 4000 "$(bluetooth)" && pkill -RTMIN+15 dwmblocks
+
+
+	#toggle-bluetooth
+
+alt + C
 	toggleprogram picom --experimental-backends
 
-super + w
-    $BROWSER
+super + {m, w, c, C, n, r, , H, y, P, o}
+    { $TERMINAL -e ncmpcpp && pkill -RTMIN+11 dwmblocks, $BROWSER, $TERMINAL -e calcurse, $TERMINAL -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook, $TERMINAL -e newsboat, $TERMINAL -e lf, , $TERMINAL -e htop, ytfzf -D, pauseallmpv, torwrap }
 
-super + ctrl + w
+super + W
 	qutebrowser --target private-window
 
-super +W
-    dmenu-nm
 
-# super + r
-#      st -e lf
-		
-super + R
-    wttr -sxhkd
+alt + { z, p, question, P}
+    {mpc shuffle, mpc toggle, mpc clear, passmenu}
 
-super + H
-		$TERM -e htop
+alt + { comma, period, less, greater, bracketleft, bracketright, braceleft, braceright}
+    {mpc prev, mpc next, mpc seek 0%, mpc repeat, mpc seek -5, mpc seek +5, mpc seek -60, mpc seek +60}
+
+alt + m 
+	pamixer -t && pkill -RTMIN+10 dwmblocks
+
+#alt + k
+#	pamixer -i 1 --allow-boost && pkill -RTMIN+10 dwmblocks
+
+#alt +j
+#	pamixer -d 1 --allow-boost && pkill -RTMIN+10 dwmblocks
+
+alt + { S, w, W, M, T, B}
+	{ mailsync, networkmanager_dmenu, toggle-wifi, toggle-mic, pulseaudio-equalizer toggle && pkill -RTMIN+14 dwmblocks, dmenu-bluetooth}
+
+############
+############
+
+XF86AudioRaiseVolume + alt
+	mpc volume +1
+
+XF86AudioLowerVolume + alt
+	mpc volume -1
+
+############
+############
+
+super + XF86AudioRaiseVolume
+	pamixer --set-volume 100 --allow-boost && pkill -RTMIN+10 dwmblocks
+
+super + XF86AudioLowerVolume
+	pamixer --set-volume 0 --allow-boost && pkill -RTMIN+10 dwmblocks
 
 XF86AudioRaiseVolume
-    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%" && pkill -RTMIN+10 dwmblocks
+	pamixer -i 1 --allow-boost && pkill -RTMIN+10 dwmblocks
+	# sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 +1%" && pkill -RTMIN+10 dwmblocks
+	# amixer set Master 1%+ && pkill -RTMIN+10 dwmblocks
 
 XF86AudioLowerVolume
-    sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%" && pkill -RTMIN+10 dwmblocks
+	pamixer -d 1 --allow-boost && pkill -RTMIN+10 dwmblocks
+	# sh -c "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -1%" && pkill -RTMIN+10 dwmblocks
+	# amixer set Master 1%- && pkill -RTMIN+10 dwmblocks
 
 XF86AudioMute
-    pactl set-sink-mute 0 toggle && pkill -RTMIN+10 dwmblocks && if pamixer --get-mute = true; then herbe mute; else herbe unmute; fi
+	pamixer -t && pkill -RTMIN+10 dwmblocks
+	# pactl set-sink-mute 0 toggle && pkill -RTMIN+10 dwmblocks && if pamixer --get-mute = true; then herbe mute; else herbe unmute; fi
+	# amixer set Master toggle && pkill -RTMIN+10 dwmblocks && if pamixer --get-mute = true; then herbe mute; else herbe unmute; fi
+
+alt + XF86AudioMute
+	dunstctl set-paused toggle && pkill -RTMIN+12 dwmblocks
 
 XF86AudioMicMute
-    pactl set-source-mute 1 toggle
+	toggle-mic
+
+super + n
+	$TERMINAL -e newsboat
 
 super + N
-    $TERM -e nvim ~/vimwiki/index.wiki
+	$TERMINAL -e $EDITOR ~/.local/share/nvim/vimwiki/index.wiki
 
-super + Return
-		$TERM
+# super + Return
+#		$TERMINAL
 
-super + semicolon
-    dmenu_run
+super {p, M, m, semicolon}
+		{$TERMINAL pulsemixer, $TERMINAL -e neomutt && pkill -RTMIN+5 dwmblocks , $TERMINAL -e ncmpcpp, dmenu_run}
 
-# super + Return + shift
-#    tdrop -ma -w 1914 -y 0 $TERM -n "float"
+super + {S, D}
+    {qutebrowser --target window https://open.spotify.com, qutebrowser --target window https://discord.com/channels/@me}
 
-# super + apostrophe
-#    tdrop -w 60% -y 30% -x 20% -n 1 st -n "float" -e bc -lq
-
-super + D
-    qutebrowser --target window https://discord.com/channels/@me
-    
-super + M
-    $TERM -e neomutt
-
-super + s
-		search
-
-super + S
-		searchq
-
-# super + q
-#		xdo kill
-
-#super + f
-		#bspfullscreen
-
-#	Send window to desktop
-#super + shift + {0-9}
-  #crystal --send {0-9}
-
-# Send window to desktop and swap to desktop
-#super + control + {0-9}
-  #bspc node -d {0-9} && bspc desktop -f {0-9}
-
-# Swap window with direction
-#super + shift + {h,j,k,l}
-	#bspc node -s {west,south,north,east}
-
-#super + Q
-		#bspc quit
-
-#super + {h,j,k,l}
-	#bspc node -f {west,south,north,east}
+super + {Right, Left, Up, Down}
+	{mpc next, mpc prev, pamixer -i 1 --allow-boost && pkill -RTMIN+10 dwmblocks, pamixer -d 1 --allow-boost && pkill -RTMIN+10 dwmblocks }

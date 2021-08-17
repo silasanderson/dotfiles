@@ -7,8 +7,10 @@ let maplocalleader=" "
 " set spellfile="/home/silas/.local/share/nvim/site/spell/en.utf-8.spl"
 " set spellfile="/usr/share/dict/words"
 
-cmap Ww w !sudo tee > /dev/null %
+cmap Ww w !doas tee > /dev/null %
 cmap Q q!
+
+autocmd BufWritePost ~/repo/dwmblocks/config.h !cd ~/repo/dwmblocks/; sudo make install && { killall -q dwmblocks;setsid dwmblocks & }
 
 " command <Wq> <:w !sudo tee %>
 
@@ -21,9 +23,32 @@ Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'lucasprag/simpleblack'
+Plug 'chrisbra/csv.vim'
+" Plug 'vim-scripts/AutoComplPop'
+Plug 'lifepillar/vim-mucomplete'
+" Plug 'lucasprag/simpleblack'
 call plug#end()
+
+set completeopt+=menuone
+set completeopt+=noselect
+set completeopt-=preview
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
+let g:mucomplete#completion_delay = 1
+set omnifunc=syntaxcomplete#Complete
+
+" vim wiki path
+" let g:vimwiki_list = [{'path': '~/.local/share/nvim/vimwiki/',
+                      " \ 'syntax': 'markdown', 'ext': '.md'}]
+" default syntax
+let vimwiki_default = {}
+let vimwiki_default.path = '~/.local/share/nvim/vimwiki/'
+let vimwiki_default.path_html = $HOME . '/html/default'
+let vimwiki_default.syntax = 'default'
+let vimwiki_default.ext = '.wiki'
+let vimwiki_default.name = 'DefaultSyntax'
+let g:vimwiki_folding = 'list'
+
 
 " Use system clipboard
 
@@ -50,7 +75,7 @@ set termguicolors
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 let g:lightline = {
-		\ 'colorscheme': 'powerlineish',
+		\ 'colorscheme': 'simpleblack',
 		\ 'mode_map': {
         \ 'n' : 'N',
         \ 'i' : 'I',
@@ -91,10 +116,10 @@ set incsearch
 set scrolloff=8
 set noshowmode
 set completeopt=menuone,longest
-set complete+=kspell
+" set complete+=kspell
 " set spell
 " set nospell
-set spelllang=en_us
+" set spelllang=en_us
 
 " Shortcutting split navigation
 map <A-h> <C-w>h

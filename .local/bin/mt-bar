@@ -1,4 +1,0 @@
-while true; do
-	xsetroot -name "$(mt -hm)"
-	sleep 1
-done

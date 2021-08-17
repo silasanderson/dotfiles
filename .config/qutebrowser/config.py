@@ -1,6 +1,9 @@
+config.load_autoconfig(False)
 import subprocess
 import os
 from qutebrowser.api import interceptor
+
+config.load_autoconfig()
 
 # taken from https://qutebrowser.org/doc/help/configuring.html
 def read_xresources(prefix):
@@ -19,64 +22,100 @@ def read_xresources(prefix):
 xresources = read_xresources("*")
 
 base =   "~/.local/share/qutebrowser/startpage/index.html"
-search = "https://searx.fmac.xyz/search?q={}"
+# search = "https://searx.be/search?q={}"
+search = "https://google.com/search?q={}"
 
-# c.fonts.default_family = "Hack"
-c.fonts.default_size = "12pt" 
+c.fonts.default_family = "jetbrains-mono"
+c.fonts.default_size = "11pt" 
+
+# Zoom
+c.zoom.default = "100%"
+
+# Characters used for hint strings.
+# Type: UniqueCharString
+c.hints.chars = 'abcdefghijklmnopqrstuvwxy'
 
 # Bind
 # config.bind(' q',   'quit')
+config.bind(';O',   'set-cmd-text :open !g')
 config.bind(';w',   'hint all window')
 config.bind(',q',   'open https://qutebrowser.org/doc/help/settings.html')
-config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
-config.bind(',ch',  'open https://raw.githubusercontent.com/qutebrowser/qutebrowser/master/doc/img/cheatsheet-big.png')
-config.bind (',gs', 'open https://github.com/silasanderson')
+# config.bind(',gm',  'open https://mail.google.com/mail/u/0/?pli=1#inbox')
+config.bind (',gh', 'open https://github.com/silasanderson')
+config.bind (',gl', 'open https://gitlab.com/silasanderson')
 config.bind (',y',  'open https://www.youtube.com')
 config.bind (',d',  'open https://github.com/silasanderson/dotfiles')
-config.bind (',a',  'open https://artstation.com')
 #config.unbind('https://google.com/search?q={}<d>', mode='normal')
 config.bind('m',    'set-cmd-text -s :quickmark-load')
+config.bind('M',    'quickmark-save')
 # config.bind('xt', 'config-cycle tabs.show always switching')
 # config.bind('xb', 'config-cycle statusbar.show always in-mode')
 # config.bind('<Alt-b>', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
 config.bind('<Alt-b>', 'config-cycle statusbar.show always in-mode ;; config-cycle tabs.show always never')
 config.bind('<Ctrl-r>', 'restart')
-config.bind(';M', 'spawn mpv {url}')
+# config.bind(';M', 'spawn mpv {url}')
 config.bind(';m', 'hint links spawn -d mpv {hint-url}')
+config.bind(';M', 'spawn -d mpv {url}')
+config.bind(';a', 'hint links spawn -d st -g 61x1 -t media -e mpv  --no-video {hint-url}')
+config.bind(';A', 'spawn -d st -g 61x1 -t media -e mpv --no-video {url}')
+config.bind(';ch', 'hint links spawn -d st -f "Mono:pixelsize=5" -n "float" -g 200x75 -e mpv {hint-url} --quiet --vo=tct')
 config.bind(';D', 'hint {right-click}')
 config.bind('dd', 'tab-close')
 config.bind('<Shift-d>', 'tab-clone')
 config.bind('<Ctrl-e>', 'scroll down')
 config.bind('<Ctrl-y>', 'scroll up')
-config.bind('<Alt-Escape>', 'leave-mode', mode='passthrough')
+config.bind('ys', 'yank selection')
+config.bind('ps', 'insert-text {primary}')
+config.bind('<<Ctrl-Escape>', 'mode-leave', mode='passthrough')
+config.bind('<<Ctrl-Shift-j>', 'tab-move +')
+config.bind('<<Ctrl-Shift-k>', 'tab-move -')
 config.unbind('<Shift-Escape>', mode='passthrough')
-#config.bind('<Shift-k>', 'tab-next')
-#config.bind('<Shift-j>', 'tab-prev')
+config.bind('<<Ctrl-Shift-k>', 'tab-move -')
+config.bind('<<Ctrl-m>', 'tab-mute')
+
+config.bind('<Ctrl-n>', 'search-next', mode='command')
+config.bind('<Ctrl-N>', 'search-prev', mode='command')
+# command mode
+config.bind('<Alt-x>', 'set-cmd-text : {url}')
+# config.bind('<Up>', 'command-history-prev', mode='command')
+# config.bind('<Ctrl-p>', 'command-history-prev', mode='command')
+# config.bind('<Down>', 'command-history-next', mode='command')
+# config.bind('<Ctrl-n>', 'command-history-next', mode='command')
+# config.bind('<Escape>', 'leave-mode', mode='command')
+# config.bind('<Ctrl-g>', 'leave-mode', mode='command')
+# config.bind('<Return>', 'command-accept', mode='command')
+# config.bind('<Ctrl-m>', 'command-accept', mode='command')
+# config.bind('<Shift-Tab>', 'completion-item-focus prev', mode='command')
+# config.bind('<Ctrl-Shift-i>', 'completion-item-focus prev', mode='command')
+# config.bind('<Tab>', 'completion-item-focus next', mode='command')
+
+config.bind('J', 'completion-item-focus next', mode='command')
+config.bind('K', 'completion-item-focus prev', mode='command')
+
+# config.bind('<Shift-k>', 'tab-next')
+# config.bind('<Shift-j>', 'tab-prev')
 # config.bind(',d' 'config-cycle content.user_stylesheets = '~/.local/share/qutebrowser/stylesheet/discord.css' ;; content.user_stylesheets ')
 
 # c.content.user_stylesheets = "~/solarized-everything-css/css/apprentice/apprentice-all-sites.css"
 
-# defalt text editor
+# # defalt text editor
 c.editor.command = [ 'st', '-e', 'nvim', '{file}']
 c.editor.encoding = 'utf-8'
 
 # Dark mode 
-
-c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.preferred_color_scheme = "dark"
 config.set("colors.webpage.darkmode.enabled", True)
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.policy.images = "smart"
 
-c.qt.args = [ "blink-settings=darkMode=4" ]  
-# c.qt.args = ['blink-settings=forceDarkModeEnabled=true,forceDarkModeInversionAlgorithm=3,...']
 ccw = c.colors.webpage
 ccw.bg = "black"
 ccw.darkmode.enabled = True
 ccw.darkmode.threshold.background = 100
 ccw.darkmode.threshold.text = 256 - ccw.darkmode.threshold.background
 ccw.darkmode.policy.images = 'smart'
-ccw.prefers_color_scheme_dark = True
+# ccw.prefers_color_scheme_dark = True
 
 # tabs
 c.tabs.indicator.width = 0
@@ -89,6 +128,9 @@ c.tabs.width = 31
 # Bookmarks
 config.unbind('<d>', mode='normal')
 
+# notification
+# content.notifications = "false"
+
 # scroll bar
 
 c.scrolling.bar = "never"
@@ -98,26 +140,30 @@ c.tabs.last_close = "close"
 c.statusbar.show = "in-mode"
 c.tabs.show = "never"
 
+# addblock
+# c.content.blocking.hosts.lists = ["https://easylist.to/easylist/easylist.txt", "https://easylist.to/easylist/easyprivacy.txt", "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"]
+c.content.blocking.method = "both"
+c.fileselect.single_file.command = ['["st", "-e", "vifm", "--choose-file", "{}"]', "vifm in st"]
+c.fileselect.multiple_files.command = ['["st", "-e", "vifm", "--choose-file", "{}"]', "vifm in st"]
+
+
+
+
 # urls
 c.url.searchengines = {
     "DEFAULT": search,
     "!g":   "https://google.com/search?q={}",
-    "!gh":  'https://github.com/search?o=desc&q={}&s=stars',
-    '!w':   'https://en.wikipedia.org/wiki/{}',
+    "!gh":  "https://github.com/search?o=desc&q={}&s=stars",
+    "!gl":  "https://gitlab.com/#stq={}",
+    '!r':   'https://www.reddit.com/search/?q={}',
+    '!s':   'https://searx.be/search?q={}',
+    '!sp':  'https://open.spotify.com/search/{}',
+    '!tw':  'https://twitter.com/search?q={}',
+    '!p':   'https://tpb.party/search/{}',
+    "!w":   'https://en.wikipedia.org/wiki/{}',
     '!aw':  'https://wiki.archlinux.org/index.php/{}',
-    '!ud':  'https://www.urbandictionary.com/define.php?term={}',
     '!y':   'https://www.youtube.com/results?search_query={}'
 }
-
-#searchengines
-#c.url.searchengines = {
-
-#    'DEFAULT':  'https://searx.ninja/search?q={}',
- #   'gh':      'https://github.com/search?o=desc&q={}&s=stars',
-  #  'w':       'https://en.wikipedia.org/wiki/{}',
-   # 'g':       'https://www.google.com/results?search_query={}'
-    #'yt';      'https://www.youtube.com/results?search_query={}'
-#}
 
 # defalt pacges
 c.url.default_page = base
@@ -131,18 +177,17 @@ c.downloads.location.directory = "~/download"
 c.content.autoplay = False
 ###################################################
 
-def filter_yt(info: interceptor.Request):
-    """Block the given request if necessary."""
-    url = info.request_url
-    if (
-        url.host() == "www.youtube.com"
-        and url.path() == "/get_video_info"
-        and "&adformat=" in url.query()
-    ):
-        info.block()
+    # """Block the given request if necessary."""
+    # url = info.request_url
+    # if (
+    #     url.host() == "www.youtube.com"
+    #     and url.path() == "/get_video_info"
+    #     and "&adformat=" in url.query()
+    # ):
+    #     info.block()
 
 
-interceptor.register(filter_yt)
+# interceptor.register(filter_yt)
 
 ######################################################
 # set qutebrowser colors
