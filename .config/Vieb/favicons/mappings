@@ -1,0 +1,9 @@
+{
+    "redirects": {
+        "https://google.com/": "https://www.google.com/"
+    },
+    "https://www.google.com/": "https://www.google.com/favicon.ico",
+    "https://duckduckgo.com/?kae=d&kav=1&ko=1&q=-t+google.com&ia=web": "https://duckduckgo.com/favicon.ico",
+    "https://duckduckgo.com/?q=google.com&kae=d&kav=1&ko=1": "https://duckduckgo.com/favicon.ico",
+    "https://duckduckgo.com/?q=google.com&kae=d&kav=1&ko=1&ia=web": "https://duckduckgo.com/favicon.ico"
+}

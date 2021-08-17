@@ -1,0 +1,21 @@
+00:00:00.223404 VirtualBox GUI VM Selector Window 6.1.22 r144080 linux.amd64 (Jun 21 2021 10:09:41) release log
+00:00:00.223407 Log opened 2021-07-19T21:08:57.582449000Z
+00:00:00.223407 Build Type: release
+00:00:00.223410 OS Product: Linux
+00:00:00.223411 OS Release: 5.12.15-arch1-1
+00:00:00.223413 OS Version: #1 SMP PREEMPT Wed, 07 Jul 2021 23:35:29 +0000
+00:00:00.223434 DMI Product Name: 20L6S5M40L
+00:00:00.223442 DMI Product Version: ThinkPad T480
+00:00:00.223446 Firmware type: UEFI
+00:00:00.224321 Secure Boot: Disabled
+00:00:00.224361 Host RAM: 7828MB (7.6GB) total, 4354MB (4.2GB) available
+00:00:00.224364 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.224365 Process ID: 5144
+00:00:00.224365 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.224400 Qt version: 5.15.2
+00:00:00.250723 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.838273 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 967x39 x 924x320
+00:00:00.845716 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:28.259921 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:02:26.610130 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:03:52.596602 GUI: UIMediumEnumerator: Medium-enumeration finished!

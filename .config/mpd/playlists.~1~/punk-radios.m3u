@@ -1,0 +1,37 @@
+#EXTM3U
+
+
+#EXTINF:-1, thistle radio
+http://ice1.somafm.com/thistle-128-mp3
+#EXTINF:-2, Whatever68
+http://149.56.185.82:8010/stream
+#EXTINF:-3, PUNK IRRATTIA
+https://punkirratia.net:8443/punk
+#EXTINF:-3, Fastcast4u
+http://192.99.17.12:5230/stream
+#EXTINF:-3, ANDYS 80S
+http://209.9.238.4:9844
+#EXTINF:-3, Real Punk Radio
+http://149.56.155.73:8080/stream
+#EXTINF:-3, Guerrilla Radio
+http://s2.stationplaylist.com:9460/guerrilla
+#EXTINF:-3, Punk4Punks
+http://184.154.43.106:8072/stream
+#EXTINF:-3, STENCH RADIO
+http://184.154.145.114:8032/
+#EXTINF:-3, BigNoise
+http://bignoise.club:8000/nonstop
+#EXTINF:-3, Punk Rock Demonstration
+http://199.87.239.197:8000/
+#EXTINF:-3, 80s Forever
+http://premium.shoutcastsolutions.com:8050/256.mp3
+#EXTINF:-3, Hard Rock Hell Radio
+http://andromeda.shoutca.st:9254/stream
+#EXTINF:-3, Bob's Ska Radio 
+http://51.255.235.165:5528
+#EXTINF:-3, Rockabilly Rebel Radio
+http://node-21.zeno.fm:80/y7tnta2hewzuv
+#EXTINF:-3, tonic ska radio
+http://178.32.146.184:2540/tonicskaradio
+#EXTINF:-3, BAGel Radio
+http://ice4.somafm.com/bagel-128-mp3

@@ -1,0 +1,52 @@
+! special
+*.fontsize:   12
+*.foreground:   #ffffff
+*.background:   #000000
+Sxiv.foreground: #ffffff 
+! Sxiv.background:#000000
+
+! black
+*.color0:       #000000
+*.color8:       #222222
+
+! red
+*.color1:       #DE1A0B
+*.color9:       #f94144
+
+! green
+*.color2:       #39FF14
+*.color10:      #5AF78E
+
+! yellow
+*.color3:       #ffd500
+*.color11:      #f6aa1c
+
+! blue
+*.color4:       #268bd2
+*.color12:      #005577
+
+! magenta
+*.color5:       #d100d1
+*.color13:      #c583d0
+
+! cyan
+*.color6:       #00FFFF
+*.color14:      #8adaf1
+
+! white
+*.color7:		#ffffff
+*.color15:      #555555
+
+/* dwm.normbgcolor:      .color0 */
+/* dwm.normbordercolor:  .color15 */
+/* dwm.normfgcolor:      #bbbbbb */
+/* dwm.selfgcolor:       .color7 */
+/* dwm.selbordercolor:   .color0 */
+/* dwm.selbgcolor:       .color12 */
+
+dwm.normbgcolor:		#000000
+dwm.normbordercolor:	#555555
+dwm.normfgcolor:		#bbbbbb
+dwm.selfgcolor:			#ffffff
+dwm.selbordercolor:		#f94144
+dwm.selbgcolor:			#005577

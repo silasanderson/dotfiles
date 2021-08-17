@@ -1,0 +1,50 @@
+{
+  "main_window_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAAUAAAAKgAAA7UAAAQjAAAAFwAAAC0AAAOyAAAEIAAAAAAAAAAAB4AAAAAXAAAALQAAA7IAAAQg"
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIgA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAlwD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACAAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAOwA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAEwD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAAM0A////AAADnAAAA/QAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "controls_help_shown_count": 2,
+    "standalone_font_settings": {},
+    "standalone_misc_settings": {
+      "remember_last_read": true,
+      "remember_window_geometry": false,
+      "save_annotations_in_ebook": true,
+      "singleinstance": false
+    },
+    "standalone_recently_opened": [
+      {
+        "key": "/tmp/calibre_5.23.0_tmp_asxbano7/lu_f6wfc_view_device_book.mobi",
+        "pathtoebook": "/tmp/calibre_5.23.0_tmp_asxbano7/lu_f6wfc_view_device_book.mobi",
+        "timestamp": "2021-08-09T18:22:21.718Z",
+        "title": "J"
+      },
+      {
+        "key": "/tmp/calibre_5.23.0_tmp_asxbano7/o8qunkmf_view_device_book.mobi",
+        "pathtoebook": "/tmp/calibre_5.23.0_tmp_asxbano7/o8qunkmf_view_device_book.mobi",
+        "timestamp": "2021-08-09T18:05:26.092Z",
+        "title": "aah"
+      },
+      {
+        "authors": [
+          "James Joyce"
+        ],
+        "key": "/home/silas/.cache/calibre/James Joyce/Ulysses (37)/Ulysses - James Joyce.mobi",
+        "pathtoebook": "/home/silas/.cache/calibre/James Joyce/Ulysses (37)/Ulysses - James Joyce.mobi",
+        "timestamp": "2021-07-26T20:25:46.070Z",
+        "title": "Ulysses"
+      },
+      {
+        "key": "/home/silas/.cache/calibre/Unknown/fraud-famine-and-fascism (15)/fraud-famine-and-fascism - Unknown.azw3",
+        "pathtoebook": "/home/silas/.cache/calibre/Unknown/fraud-famine-and-fascism (15)/fraud-famine-and-fascism - Unknown.azw3",
+        "timestamp": "2021-07-26T18:50:22.779Z",
+        "title": "fraud-famine-and-fascism"
+      }
+    ]
+  }
+}
