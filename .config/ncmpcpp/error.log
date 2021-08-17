@@ -1,0 +1,216 @@
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: Could not open file /home/silas/mda/audio/music/VA - 100 Greatest Punk Classics (2020) Mp3 320kbps [PMEDIA] ⭐️/035. Tenpole Tudor - Swords Of A Thousand Men.mp3
+TagLib: Could not open file /home/silas/mda/audio/music/VA - 100 Greatest Punk Classics (2020) Mp3 320kbps [PMEDIA] ⭐️/096. D.O.A. - The Enemy.mp3
+TagLib: Could not open file /home/silas/mda/audio/music/VA - 100 Greatest Punk Classics (2020) Mp3 320kbps [PMEDIA] ⭐️/077. Suicidal Tendencies - Institutionalized.mp3
+TagLib: Could not open file /home/silas/mda/audio/music/VA - 100 Greatest Punk Classics (2020) Mp3 320kbps [PMEDIA] ⭐️/032. The Special AKA - Gangsters.mp3
+TagLib: Could not open file /home/silas/mda/audio/music/VA - 100 Greatest Punk Classics (2020) Mp3 320kbps [PMEDIA] ⭐️/035. Tenpole Tudor - Swords Of A Thousand Men.mp3
+TagLib: Could not open file /home/silas/mda/audio/music/Sex Pistols - 1979 The Great Rock 'N' Roll Swindle[SACD-Japan.Ed.2013][24B-96Hz]FLAC/13 - Sex Pistols - My Way.flac
+TagLib: Could not open file /home/silas/mda/audio/music/Sex Pistols - 1979 The Great Rock 'N' Roll Swindle[SACD-Japan.Ed.2013][24B-96Hz]FLAC/13 - Sex Pistols - My Way.flac
+TagLib: Could not open file /home/silas/mda/audio/music/Pink Floyd/Pink Floyd - A Momentary Lapse Of Reason 1987 [EAC - FLAC] (oan)/A Momentary Lapse Of Reason - wav.cue/track0005
+TagLib: Could not open file /home/silas/mda/audio/music/Frank Sinatra - My Way The Best Of Frank Sinatra (1997) [FLAC]/My Way The Best Of Frank Sinatra.cue/track0001
+TagLib: Could not open file /home/silas/mda/audio/music/Fugazi/Studio albums/1998 - End Hits/End Hits.cue/track0001
+writeCommonTags: couldn't write 'year' tag to 'The Clash/23 Lightning Strikes (Not Once But Twice).wma' as it's not a positive integer
+writeCommonTags: couldn't write 'track' tag to 'The Clash/23 Lightning Strikes (Not Once But Twice).wma' as it's not a positive integer
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: Could not open file /home/silas/mda/audio/music/Ministry of sound - Essential Reggae [2009]  [EAC-FLAC](oan)/Essential Reggae [Disc 1]/Essential Reggae [Disc 1] - wav.cue/track0001
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2::Tag::read() - Duplicate ID3v2 tags found.
+TagLib: ID3v2::Tag::read() - Duplicate ID3v2 tags found.
+TagLib: ID3v2.4 no longer supports the frame type TIME.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVA.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'RVA' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'CM1' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TSIZ.  It will be discarded from the tag.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'CM1' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'CM1' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2::Tag::read() - Duplicate ID3v2 tags found.
+writeCommonTags: couldn't write 'year' tag to 'Top 1000 Greatest Hip-Hop and Rap Songs/Pt. 7 - Songs #601-700/615. Eminem - Bitch Please II ft. Dr. Dre, Snoop Dogg, Nate Dogg & Xzibit (2000).wma' as it's not a positive integer
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'CM1' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: An ID3v2 frame of unsupported or unknown type 'CM1' has been discarded
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+writeCommonTags: couldn't write 'year' tag to 'Top 1000 Greatest Hip-Hop and Rap Songs/Pt. 7 - Songs #601-700/615. Eminem - Bitch Please II ft. Dr. Dre, Snoop Dogg, Nate Dogg & Xzibit (2000).wma' as it's not a positive integer
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: Could not open file /home/silas/mda/audio/music/Diddy.~1~/The Saga Continues/02-Bad Boy for Life.flac
+TagLib: Could not open file /home/silas/mda/audio/music/Diddy.~1~/The Saga Continues/02-Bad Boy for Life.flac
+TagLib: Could not open file /home/silas/mda/audio/music/Diddy.~1~/Bad Boy Watcha Gon' Do Dre Day (feat. Biggie & Rick Ross)/01-Bad Boy Watcha Gon' Do Dre Day.flac
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: Could not open file /home/silas/mda/audio/music/Various Punk & Ska Compilations [FLAC] [h33t] - Kitlope/Fat Wreck Chords Presents - Survival of the Fattest Vol. 2 1996/Survival of the Fattest Volume Two.cue/track0001
+TagLib: Could not open file /home/silas/mda/audio/music/Various Punk & Ska Compilations [FLAC] [h33t] - Kitlope/2-Tone. A Look at Ska (Retro 80s) Vol. 3 1998/2-Tone  A Look at Ska [Retro 80's Volume 3].cue/track0001
+writeCommonTags: couldn't write 'year' tag to 'Top 1000 Greatest Hip-Hop and Rap Songs/Pt. 7 - Songs #601-700/615. Eminem - Bitch Please II ft. Dr. Dre, Snoop Dogg, Nate Dogg & Xzibit (2000).wma' as it's not a positive integer
+writeCommonTags: couldn't write 'year' tag to 'Top 1000 Greatest Hip-Hop and Rap Songs/Pt. 7 - Songs #601-700/615. Eminem - Bitch Please II ft. Dr. Dre, Snoop Dogg, Nate Dogg & Xzibit (2000).wma' as it's not a positive integer
+TagLib: MPEG::Header::parse() -- data is too short for an MPEG frame header.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type TDAT.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: ID3v2.4 no longer supports the frame type RVAD.  It will be discarded from the tag.
+TagLib: Could not open file /home/silas/mda/audio/music/my-chemical-romance/Albums/[2010] Danger Days, The True Lives Of The Fabulous Killjoys/Danger Days  The True Lives Of The Fabulous Killjoys.cue/track0003
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk
+TagLib: Could not open file /home/silas/mda/audio/music/https://punkirratia.net:8443/punk

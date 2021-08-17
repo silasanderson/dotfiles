@@ -1,0 +1,82 @@
+#!/bin/sh
+
+#unset DISPLAY
+# export EDITOR="nvim"
+# export READER="zathura"
+# export VISUAL="nvim"
+# export VIDEO="mpv"
+# export TERM="st-256color"
+# export TERMINAL="st"
+# export BROWSER="qutebrowser"
+# export COLORTERM="truecolor"
+# export PAGER="less"
+# export WM="dwm"
+# export VIEW="sxiv"
+# export IMAGE="sxiv"
+# export OPENER="xdg-open"
+
+
+# clear tmp
+doas rm -R ~/.gnupg
+doas rm -R ~/.abook
+
+# set backlight
+# xbacklight -inc .04
+
+# set trackpoint to full speed
+xinput set-prop "TPPS/2 IBM TrackPoint" "339" .4
+
+# set key repeat rate. delay 300 milisecond, 80 per sec
+xset r rate 200 50
+
+# set  
+# setxkbmap colemak_wide
+# setxkbmap us.alt
+xmodmap -e 'keycode 107 = Super_R'
+xmodmap -e "clear lock"
+xmodmap -e "keycode 66 = Escape"
+xmodmap -e "keycode 9 = Caps_Lock"
+
+# run "togele track pad" script
+# xinput --disable "TPPS/2 IBM TrackPoint"
+xinput --disable "Synaptics TM3276-022"
+
+# display
+xset -dpms # Disables Energy Star features
+xset s off # Disables screen saver
+
+# color
+xrdb .config/X11/xresources
+
+# xsetroot -solid $(xrdb -query | grep "*.background" | awk '{print $2}')
+# set wallpaper
+# xwallpaper --zoom	~/.local/share/bg
+# xwallpaper --zoom	~/.config/black.png
+# xwallpaper --zoom	~/mda/image/wallpaper/
+
+# xcompmgr &
+# unclutter -idle 0 &
+# picom --experimental-backends &
+dunst &
+# compton &
+# shotkey &
+mpd &
+sxhkd &
+# mullvad-vpn &
+
+
+if [ $WM = dwm ]; then
+	$STATUSBAR &
+	unclutter -idle 1 &
+	# hhpc &
+fi
+
+# music
+sb-mpdup &
+pkill -RTMIN+11 dwmblocks
+
+start $WM 
+while true; do 
+$WM >/dev/null 2>&1
+done
+exec $WM

@@ -1,0 +1,21 @@
+color "type=INPUT fg=WHITE bg=BLACK"
+color "type=NORMAL fg=WHITE bg=BLACK"
+color "type=NUMB fg=RED bg=BLACK"
+color "type=STRG fg=WHITE bg=BLACK"
+color "type=CELL_SELECTION_SC fg=BLACK bg=GREEN"
+color "type=CELL_SELECTION fg=GREEN bg=BLACK"
+color "type=MODE fg=BLUE bg=BLACK"
+color "type=INFO_MSG fg=BLACK bg=GREEN"
+color "type=ERROR_MSG fg=BLACK bg=RED"
+color "type=HEADINGS dim=1 fg=BLUE bg=BLACK"
+color "type=HEADINGS_ODD dim=1 fg=BLUE bg=BLACK"
+
+set autocalc
+set numeric
+set numeric_decimal=0
+set overlap
+set xlsx_readformulas
+
+
+nmap "YY" ":ccopy<CR>"
+nmap "P" ":cpaste<CR>"
