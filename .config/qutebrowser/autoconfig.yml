@@ -6,6 +6,17 @@
 
 config_version: 2
 settings:
+  content.media.audio_capture:
+    https://discord.com: true
+  content.media.video_capture:
+    https://discord.com: true
+  content.notifications.enabled:
+    https://www.netflix.com: false
+    https://www.reddit.com: false
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: false
+  scrolling.bar:
+    global: never
   statusbar.show:
     global: always
   tabs.show:

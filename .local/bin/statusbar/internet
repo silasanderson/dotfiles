@@ -1,3 +1,0 @@
-#!/bin/sh
-
-if [ $(cat /sys/class/net/w*/operstate 2>/dev/null) = up ]; then echo 直 $(awk '/^\s*w/ { print int($3 * 100 / 70) "% " }' /proc/net/wireless) ; else echo 睊 ; fi

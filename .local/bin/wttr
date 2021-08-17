@@ -1,10 +1,6 @@
 #!/bin/sh
 
 case $1 in
-		*v)
-		  clear
-			cat ~/.cache/wether/visual
-				;;
 		  "")
 			cat ~/.cache/wether/single
 				;;
@@ -20,7 +16,7 @@ case $1 in
 		  clear
 			cat	~/.cache/wether/long
 			;;
-			*mpv)
+			-mpv)
 				mpv --loop-file=inf ~/.cache/wether/radar.gif
 			;;
 			*r)
@@ -29,6 +25,10 @@ case $1 in
 			*sxhkd)
 				st -f "Mono:pixelsize=6" -e chafa --clear -w 9 -c full --symbols braille --fill braille ~/.cache/wether/radar.gif
 			;;
+		*v)
+		  clear
+			cat ~/.cache/wether/visual
+				;;
 		  *)
 			echo wttr: Unknown option argument: "$@"
 		  echo More info with "wttr -h"
